@@ -1,6 +1,8 @@
 import React from 'react';
 import { Twitter, GitHub, Database, Mail, Send } from 'react-feather';
 import styled from 'styled-components';
+import { theme } from '../../style';
+const { colors } = theme;
 
 const FooterContainer = styled.footer`
   display: flex;
@@ -36,7 +38,7 @@ const FooterLink = styled.div`
   width: 34rem;
 
   a {
-    background: ;
+    background: ${colors.black};
     color: $blue;
     font-weight: 900;
     text-decoration: none;

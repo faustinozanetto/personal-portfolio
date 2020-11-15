@@ -2,9 +2,10 @@ import React, { lazy, useState, Suspense } from 'react';
 import { Route, Redirect, Switch, useLocation } from 'react-router-dom';
 import useDarkMode from 'use-dark-mode';
 import styled from 'styled-components';
-import Navbar from './components/navbar/Navbar';
-import './App.css';
 
+const GlobalStyle = lazy(() => import('./style/GlobalStyle'));
+
+const Navbar = lazy(() => import('./components/navbar/Navbar'));
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
 const Blog = lazy(() => import('./pages/Blog'));
@@ -52,6 +53,7 @@ const App = () => {
   ];
   return (
     <Portfolio>
+      <GlobalStyle />
       <h1>Personal Portfolio</h1>
       <Navbar pages={pages} {...{ darkMode }} />
       <Suspense fallback={<div />}>
