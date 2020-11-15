@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "text": "My name is Faustino and I am 17 years old, I´m currently living in Argentina. Im in my last year of High School, next year I will be starting the Software Engineering career on a local University."
+  },
+  {
+    "id": 2,
+    "text": "I have always been interested in computers, I first played a game when I was about 8 years old. Minecraft was the game that marked an important part of my life. Since little I have been into programming, discovering how games were made was really interesting for me. When I was like 12 I decided to start learning Java in order to make Minecraft Plugins. I managed to release several plugins and most of theme were accepted by the community really well, one even reaching 5000 downloads on Spigot MC."
+  },
+  {
+    "id": 3,
+    "text": "After learning Java for some time I decided to give C++ a try because I wanted to make games with it. So I decided to start learning it with Unreal Engine. It was a hard journey, but I really learned so much about coding and programming overall. I kept used C++ for about 2 years until I started learning Web development."
+  }
+]

@@ -10,6 +10,10 @@ const Theme = {
     lightGrey: '#9B9B9B',
     grey: '#404040',
     darkGrey: '#282828',
+    cobaltBlue: '#004BA8',
+    brightNavyBlue: '#3E78B2',
+    raisinBlack: '#24272B',
+    charcoal: '#4A525A',
   },
 
   fonts: {
