@@ -6,9 +6,10 @@ import aboutData from '../data/about.json';
 
 const AboutContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
+  margin-left: 3rem;
 `;
 
 const AboutLeft = styled.div`

@@ -2,6 +2,7 @@ import React, { lazy, useState, Suspense } from 'react';
 import { Route, Redirect, Switch, useLocation } from 'react-router-dom';
 import useDarkMode from 'use-dark-mode';
 import styled from 'styled-components';
+import './App.scss';
 
 const GlobalStyle = lazy(() => import('./style/GlobalStyle'));
 
@@ -16,8 +17,15 @@ const Footer = lazy(() => import('./components/footer/Footer'));
 const Portfolio = styled.div`
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  display: flex;
-  flex-direction: column;
+`;
+
+const MainContainer = styled.div`
+  /* align-self: center; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* padding-left: 20%;
+  padding-right: 20%;
+  padding-top: 30px; */
   min-height: 100vh;
 `;
 
@@ -54,23 +62,24 @@ const App = () => {
   return (
     <Portfolio>
       <GlobalStyle />
-      <h1>Personal Portfolio</h1>
-      <Navbar pages={pages} {...{ darkMode }} />
-      <Suspense fallback={<div />}>
-        <Switch location={location}>
-          {pages.map((page, index) => {
-            return (
-              <Route
-                exact
-                path={page.pageLink}
-                render={({ match }) => <page.view />}
-                key={index}
-              />
-            );
-          })}
-          <Redirect to='/' />
-        </Switch>
-      </Suspense>
+      <MainContainer>
+        <Navbar pages={pages} {...{ darkMode }} />
+        <Suspense fallback={<div />}>
+          <Switch location={location}>
+            {pages.map((page, index) => {
+              return (
+                <Route
+                  exact
+                  path={page.pageLink}
+                  render={({ match }) => <page.view />}
+                  key={index}
+                />
+              );
+            })}
+            <Redirect to='/' />
+          </Switch>
+        </Suspense>
+      </MainContainer>
       <Suspense fallback={<div />}>
         <Footer />
       </Suspense>

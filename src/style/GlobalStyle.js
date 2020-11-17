@@ -1,13 +1,11 @@
 import { createGlobalStyle } from 'styled-components/macro';
-// import Theme from './Themes';
-// const { colors, fontSizes, fonts, fontWeights } = Theme;
+import { Theme } from './';
+const { colors } = Theme;
 
 const GlobalStyle = createGlobalStyle`
   html {
+    background-color: #fafafb;
     overflow-x: hidden;
-    width: 100vh;
-    padding-left: 15%;
-    padding-top: 5%;
   }
 
   body {
@@ -15,6 +13,21 @@ const GlobalStyle = createGlobalStyle`
     -webkit-touch-callout: none;
     margin: 0;
     padding: 0;
+  }
+
+  .dark-mode {
+    background: ${colors.richBlack} !important;
+    color: #fff;
+
+    h1,h2,h3,h4,h5,p {
+      /* background: ${colors.richBlack} !important; */
+      color: #fff !important;
+    }
+
+    a {
+      color: white !important;
+      /* background: #fff; */
+    }
   }
 `;
 

@@ -2,18 +2,53 @@ import React, { lazy, Suspense } from 'react';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 
+const LanguageCard = lazy(() => import('../components/card/LanguageCard'));
+const RecentWorkCard = lazy(() => import('../components/card/RecentWorkCard'));
+
 const HomeContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
-  /* margin-right: 3rem; */
+  margin-left: 3rem;
 `;
 
 const HomeLeft = styled.div`
   display: flex;
   flex-direction: column;
   width: 90%;
+`;
+
+const CardsContainer = styled.div`
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-basis: auto;
+  justify-content: space-between;
+`;
+
+const RecentWorkContainer = styled.div`
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+`;
+
+const RecentWorkCardsContainer = styled.div`
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-basis: auto;
+  justify-content: space-between;
+`;
+
+const RecentWorkTitle = styled.h2`
+  align-self: center;
+`;
+
+const RecentWorkSubtitle = styled.h3`
+  align-self: center;
 `;
 
 const Home = () => {
@@ -40,6 +75,21 @@ const Home = () => {
             vitae itaque doloribus ea quam quis.
           </p>
         </HomeLeft>
+        <CardsContainer>
+          <LanguageCard cardTitle='Java' />
+          <LanguageCard cardTitle='Python' />
+          <LanguageCard cardTitle='JavaScript' />
+        </CardsContainer>
+        {/* <RecentWorkContainer>
+           <RecentWorkTitle>My Recent Work</RecentWorkTitle>
+          <RecentWorkSubtitle>
+            Here are a few design projects I've worked on recently. Want to see
+            more?
+          </RecentWorkSubtitle> *
+          <RecentWorkCardsContainer>
+            <RecentWorkCard />
+          </RecentWorkCardsContainer>
+        </RecentWorkContainer> */}
       </HomeContainer>
     </React.Fragment>
   );

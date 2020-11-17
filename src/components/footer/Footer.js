@@ -7,7 +7,7 @@ const { colors } = Theme;
 const FooterContainer = styled.footer`
   display: flex;
   flex-direction: column;
-  position: absolute;
+  /* position: absolute; */
   left: 0px;
   bottom: 0px;
   width: 100%;

@@ -14,6 +14,7 @@ const Theme = {
     brightNavyBlue: '#3E78B2',
     raisinBlack: '#24272B',
     charcoal: '#4A525A',
+    richBlack: '#07070A',
   },
 
   fonts: {
