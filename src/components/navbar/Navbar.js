@@ -34,14 +34,22 @@ const NavbarLink = styled(Link)`
   line-height: 1;
   color: currentColor;
   text-decoration: none;
+  transition: all 0.2s ease-in-out;
 
   @media (max-width: 991px) {
     padding: 1.5rem;
+    margin-left: 10rem;
+    margin-right: 10rem;
+    border-radius: 50px;
+    transition: margin 0.3s ease-in-out;
 
     &:hover,
     &:focus {
       color: inherit;
-      background-color: #6b5aed;
+      margin-left: 20rem;
+      margin-right: 20rem;
+      border-radius: 50px;
+      background: linear-gradient(#6e3398, #6b5aed);
     }
   }
 `;
@@ -54,36 +62,33 @@ const NavbarContact = styled(Link)`
   line-height: 1;
   color: currentColor;
   text-decoration: none;
-
-  @media (max-width: 991px) {
-    padding: 1.5rem;
-
-    &:hover,
-    &:focus {
-      color: inherit;
-      background-color: #6b5aed;
-    }
-  }
+  transition: all 0.2s ease-in-out;
 
   @media (min-width: 992px) {
-    background-color: linear-gradient(45deg, #6e3398, #6b5aed);
-    border-radius: 20em;
-    padding: 1rem 2rem 0.875rem;
+    border-radius: 20rem;
+    padding: 1rem;
+    background: linear-gradient(#6e3398, #6b5aed);
 
-    &:focus,
-    &:hover {
-      color: #e6f1f8;
-      background-color: linear-gradient(45deg, #bb3d50, #ed667b);
+    &:hover,
+    &:focus {
+      background: linear-gradient(#6e3398, red);
     }
   }
 
   @media (max-width: 991px) {
     padding: 1.5rem;
+    margin-left: 10rem;
+    margin-right: 10rem;
+    border-radius: 50px;
+    transition: margin 0.3s ease-in-out;
 
     &:hover,
     &:focus {
       color: inherit;
-      background-color: #6b5aed;
+      margin-left: 20rem;
+      margin-right: 20rem;
+      border-radius: 50px;
+      background: linear-gradient(#6e3398, #6b5aed);
     }
   }
 `;

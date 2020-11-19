@@ -50,6 +50,10 @@
     --gradient-brand-tertiary: linear-gradient(45deg, #bb3d50, #ed667b);
   }
 }
+
+* {
+  transition: margin 0.3s ease-in-out;
+}
 article,
 aside,
 details,
