@@ -8,10 +8,84 @@ const ThemeSwitcher = lazy(() => import('../theme/ThemeSwitcher'));
 const NavbarLogo = styled.h2`
   color: white;
   font-weight: 600;
-  -webkit-transform: scaleX(0.13846);
-  transform: scaleX(0.13846);
-  -webkit-animation: logo-typing 0.5s step-end 1s forwards;
-  animation: logo-typing 0.5s step-end 1s forwards;
+`;
+
+const NavbarItem = styled.li`
+  font-weight: 600;
+  margin-left: 2rem;
+
+  @media (max-width: 991px) {
+    margin: 0;
+    font-size: 1.25rem;
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+    -webkit-animation-duration: 0.4s;
+    animation-duration: 0.4s;
+    -webkit-animation-fill-mode: backwards;
+    animation-fill-mode: backwards;
+  }
+`;
+
+const NavbarLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  line-height: 1;
+  color: currentColor;
+  text-decoration: none;
+
+  @media (max-width: 991px) {
+    padding: 1.5rem;
+
+    &:hover,
+    &:focus {
+      color: inherit;
+      background-color: #6b5aed;
+    }
+  }
+`;
+
+const NavbarContact = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  line-height: 1;
+  color: currentColor;
+  text-decoration: none;
+
+  @media (max-width: 991px) {
+    padding: 1.5rem;
+
+    &:hover,
+    &:focus {
+      color: inherit;
+      background-color: #6b5aed;
+    }
+  }
+
+  @media (min-width: 992px) {
+    background-color: linear-gradient(45deg, #6e3398, #6b5aed);
+    border-radius: 20em;
+    padding: 1rem 2rem 0.875rem;
+
+    &:focus,
+    &:hover {
+      color: #e6f1f8;
+      background-color: linear-gradient(45deg, #bb3d50, #ed667b);
+    }
+  }
+
+  @media (max-width: 991px) {
+    padding: 1.5rem;
+
+    &:hover,
+    &:focus {
+      color: inherit;
+      background-color: #6b5aed;
+    }
+  }
 `;
 
 const NewNavbar = ({ pages, darkMode }) => {
@@ -21,9 +95,11 @@ const NewNavbar = ({ pages, darkMode }) => {
     const body = document.querySelector('body');
     if (body.classList.contains('nav-open')) {
       body.classList.remove('nav-open');
+      body.classList.remove('no-scroll');
       setCollapsed(true);
     } else {
       body.classList.add('nav-open');
+      body.classList.add('no-scroll');
       setCollapsed(false);
     }
   };
@@ -63,31 +139,21 @@ const NewNavbar = ({ pages, darkMode }) => {
               </button>
               <div className='nav__content'>
                 <ul className='nav__menu' id='nav-menu'>
-                  <li className='nav__item'>
-                    <a href='/en/projects/' className='nav__link '>
-                      Projects
-                    </a>
-                  </li>
-                  <li className='nav__item'>
-                    <a href='/en/services/' className='nav__link '>
-                      Blog
-                    </a>
-                  </li>
-                  <li className='nav__item'>
-                    <a href='/en/team/' className='nav__link '>
-                      Skills
-                    </a>
-                  </li>
-                  <li className='nav__item'>
-                    <a href='/en/blog/' className='nav__link '>
-                      About
-                    </a>
-                  </li>
-                  <li className='nav__item'>
-                    <a href='/en/contact/' className='nav__link nav__link--cta'>
-                      Contact
-                    </a>
-                  </li>
+                  <NavbarItem className='nav__item'>
+                    <NavbarLink to='/en/projects/'>Projects</NavbarLink>
+                  </NavbarItem>
+                  <NavbarItem className='nav__item'>
+                    <NavbarLink to='/en/services/'>Blog</NavbarLink>
+                  </NavbarItem>
+                  <NavbarItem className='nav__item'>
+                    <NavbarLink to='/en/team/'>Skills</NavbarLink>
+                  </NavbarItem>
+                  <NavbarItem className='nav__item'>
+                    <NavbarLink to='/en/blog/'>About</NavbarLink>
+                  </NavbarItem>
+                  <NavbarItem className='nav__item'>
+                    <NavbarContact to='/en/contact/'>Contact</NavbarContact>
+                  </NavbarItem>
                 </ul>
                 <div className='nav__darkmode'>
                   <button
