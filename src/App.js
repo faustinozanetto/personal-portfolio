@@ -12,21 +12,20 @@ const About = lazy(() => import('./pages/About'));
 const Blog = lazy(() => import('./pages/Blog'));
 const Contact = lazy(() => import('./pages/Contact'));
 
-const Footer = lazy(() => import('./components/footer/Footer'));
-
-const Portfolio = styled.div`
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-`;
+const NewFooter = lazy(() => import('./components/footer/NewFooter'));
 
 const MainContainer = styled.div`
-  /* align-self: center; */
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* padding-left: 20%;
-  padding-right: 20%;
-  padding-top: 30px; */
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+`;
+
+const AppContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
   min-height: 100vh;
+  box-sizing: border-box;
 `;
 
 const App = () => {
@@ -60,30 +59,32 @@ const App = () => {
     },
   ];
   return (
-    <Portfolio>
-      <GlobalStyle />
-      <MainContainer>
+    <React.Fragment>
+      <AppContainer>
         <Navbar pages={pages} {...{ darkMode }} />
+        <GlobalStyle />
+        <MainContainer>
+          <Suspense fallback={<div />}>
+            <Switch location={location}>
+              {pages.map((page, index) => {
+                return (
+                  <Route
+                    exact
+                    path={page.pageLink}
+                    render={({ match }) => <page.view />}
+                    key={index}
+                  />
+                );
+              })}
+              <Redirect to='/' />
+            </Switch>
+          </Suspense>
+        </MainContainer>
         <Suspense fallback={<div />}>
-          <Switch location={location}>
-            {pages.map((page, index) => {
-              return (
-                <Route
-                  exact
-                  path={page.pageLink}
-                  render={({ match }) => <page.view />}
-                  key={index}
-                />
-              );
-            })}
-            <Redirect to='/' />
-          </Switch>
+          <NewFooter />
         </Suspense>
-      </MainContainer>
-      <Suspense fallback={<div />}>
-        <Footer />
-      </Suspense>
-    </Portfolio>
+      </AppContainer>
+    </React.Fragment>
   );
 };
 

@@ -4,13 +4,19 @@ import styled from 'styled-components';
 
 const LanguageCard = lazy(() => import('../components/card/LanguageCard'));
 const RecentWorkCard = lazy(() => import('../components/card/RecentWorkCard'));
+const ParagraphSection = lazy(() =>
+  import('../components/common/ParagraphSection')
+);
 
 const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
   justify-content: center;
-  margin-left: 3rem;
+  padding: 1rem 4rem 1rem 4rem;
+
+  @media screen and (max-width: 768px) {
+    padding: 1rem 2rem 1rem 2rem;
+  }
 `;
 
 const HomeLeft = styled.div`
@@ -58,7 +64,12 @@ const Home = () => {
         <title>Home - Personal Portfolio</title>
       </Helmet>
       <HomeContainer>
-        <HomeLeft>
+        <ParagraphSection></ParagraphSection>
+        <ParagraphSection></ParagraphSection>
+        <ParagraphSection></ParagraphSection>
+        <ParagraphSection></ParagraphSection>
+        <ParagraphSection></ParagraphSection>
+        {/* <HomeLeft>
           <h3>Welcome to my portfolio</h3>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem
@@ -79,13 +90,15 @@ const Home = () => {
           <LanguageCard cardTitle='Java' />
           <LanguageCard cardTitle='Python' />
           <LanguageCard cardTitle='JavaScript' />
-        </CardsContainer>
-        {/* <RecentWorkContainer>
-           <RecentWorkTitle>My Recent Work</RecentWorkTitle>
+        </CardsContainer>{' '}
+        
+        <RecentWorkContainer>
+          <RecentWorkTitle>My Recent Work</RecentWorkTitle>
           <RecentWorkSubtitle>
             Here are a few design projects I've worked on recently. Want to see
             more?
-          </RecentWorkSubtitle> *
+          </RecentWorkSubtitle>{' '}
+          
           <RecentWorkCardsContainer>
             <RecentWorkCard />
           </RecentWorkCardsContainer>

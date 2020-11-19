@@ -121,6 +121,330 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+@font-face {
+  font-family: 'GTSectraMedium';
+  src: url(/build//assets/fonts/22f4ff22adb9547af21250767c45e970.eot);
+  src: url(/build//assets/fonts/22f4ff22adb9547af21250767c45e970.eot?#iefix)
+      format('embedded-opentype'),
+    url(/build//assets/fonts/370e51f19c3a7dd0fc875184ac9ed831.woff2)
+      format('woff2'),
+    url(/build//assets/fonts/0e80614c74e6b9bfb9448b9d87720220.woff)
+      format('woff'),
+    url(/build//assets/fonts/3c572971026b9e30c915d5a834880c99.ttf)
+      format('truetype'),
+    url(/build//assets/images/GTSectraDisplay-Medium.svg#GTSectraDisplay-Medium)
+      format('svg');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'GTSectraLightItalic';
+  src: url(/build//assets/fonts/59b61a7f43e6f691c8b6b50ab3859224.eot);
+  src: url(/build//assets/fonts/59b61a7f43e6f691c8b6b50ab3859224.eot?#iefix)
+      format('embedded-opentype'),
+    url(/build//assets/fonts/73c8a136ece1a983ac7b472bc232b2d9.woff2)
+      format('woff2'),
+    url(/build//assets/fonts/8bc1ee70c8115c5c77da4ae2a7368c1c.woff)
+      format('woff'),
+    url(/build//assets/fonts/0a9a2a826927e25dfe192873c9a696ce.ttf)
+      format('truetype'),
+    url(/build//assets/images/GTSectraDisplay-LightItalic.svg#GTSectraDisplay-LightItalic)
+      format('svg');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'GTSectraLight';
+  src: url(/build//assets/fonts/1736432eb456871267d50467a172ef44.eot);
+  src: url(/build//assets/fonts/1736432eb456871267d50467a172ef44.eot?#iefix)
+      format('embedded-opentype'),
+    url(/build//assets/fonts/ec28b6b6f01770ad4e1ef50561011e0c.woff2)
+      format('woff2'),
+    url(/build//assets/fonts/4a07e3964c360c16cdacb72db1132f5a.woff)
+      format('woff'),
+    url(/build//assets/fonts/48241bce11d66c05cd0dba970184847d.ttf)
+      format('truetype'),
+    url(/build//assets/images/GTSectraDisplay-Light.svg#GTSectraDisplay-Light)
+      format('svg');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'GTSectraMediumItalic';
+  src: url(/build//assets/fonts/02bd80c8228ca6e12fda91ef39401329.eot);
+  src: url(/build//assets/fonts/02bd80c8228ca6e12fda91ef39401329.eot?#iefix)
+      format('embedded-opentype'),
+    url(/build//assets/fonts/8989e1b359401e8413e6a4a6e9e3e9cd.woff2)
+      format('woff2'),
+    url(/build//assets/fonts/d57b6a025c132d90e0db4aeb29fb1435.woff)
+      format('woff'),
+    url(/build//assets/fonts/f517067e96e902786ba16375e09785ce.ttf)
+      format('truetype'),
+    url(/build//assets/images/GTSectraDisplay-MediumItalic.svg#GTSectraDisplay-MediumItalic)
+      format('svg');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'GTWalsheimProBlack-Oblique';
+  src: url(/build//assets/fonts/afdef02a12cb68ace28b8606487f1b9b.eot);
+  src: url(/build//assets/fonts/afdef02a12cb68ace28b8606487f1b9b.eot?#iefix)
+      format('embedded-opentype'),
+    url(/build//assets/fonts/c93da313106144d6c0463e0a517dacab.woff2)
+      format('woff2'),
+    url(/build//assets/fonts/9d346e9b635a7e9114940360afc70f1d.woff)
+      format('woff'),
+    url(/build//assets/fonts/20de11b02ba5c377ed16ced172a6e563.ttf)
+      format('truetype'),
+    url(/build//assets/images/GTWalsheimProBlack-Oblique.svg#GTWalsheimProBlack-Oblique)
+      format('svg');
+  font-weight: 900;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'GTWalsheimProLight-Oblique';
+  src: url(/build//assets/fonts/114074904bf6e9bd63390897653e099e.eot);
+  src: url(/build//assets/fonts/114074904bf6e9bd63390897653e099e.eot?#iefix)
+      format('embedded-opentype'),
+    url(/build//assets/fonts/8913cc21c3450e894a4e5097ddfb236f.woff2)
+      format('woff2'),
+    url(/build//assets/fonts/b22a4d0413b3f8adbaf23ffbc8b7265d.woff)
+      format('woff'),
+    url(/build//assets/fonts/e01133a136468d9227d12fc7b43c8e11.ttf)
+      format('truetype'),
+    url(/build//assets/images/GTWalsheimProLight-Oblique.svg#GTWalsheimProLight-Oblique)
+      format('svg');
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'GTWalsheimProUltraLight-Oblique';
+  src: url(/build//assets/fonts/bdbc4c15407907990eb30614d8a5af58.eot);
+  src: url(/build//assets/fonts/bdbc4c15407907990eb30614d8a5af58.eot?#iefix)
+      format('embedded-opentype'),
+    url(/build//assets/fonts/b4f2a257eccd24dfa720e9b1e7bac3d4.woff2)
+      format('woff2'),
+    url(/build//assets/fonts/c5eb0dc911ae49734d2c9698b7457ed1.woff)
+      format('woff'),
+    url(/build//assets/fonts/0545eb412bedc279f299a5bbb054f378.ttf)
+      format('truetype'),
+    url(/build//assets/images/GTWalsheimProUltraLight-Oblique.svg#GTWalsheimProUltraLight-Oblique)
+      format('svg');
+  font-weight: 200;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'GTWalsheimProUltraBold';
+  src: url(/build//assets/fonts/25f9c1f38cd8f350376e5099326cd929.eot);
+  src: url(/build//assets/fonts/25f9c1f38cd8f350376e5099326cd929.eot?#iefix)
+      format('embedded-opentype'),
+    url(/build//assets/fonts/92ba564ee8db42d8f5d5331edc0a8892.woff2)
+      format('woff2'),
+    url(/build//assets/fonts/4a3cd282c3badac93ecd6f4580b8edab.woff)
+      format('woff'),
+    url(/build//assets/fonts/421ab33ea9d847888201341a25a3b8bc.ttf)
+      format('truetype'),
+    url(/build//assets/images/GTWalsheimProUltraBold.svg#GTWalsheimProUltraBold)
+      format('svg');
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GTWalsheimProLight';
+  src: url(/build//assets/fonts/9da736fc9fa1d76ff7006903dba725fa.eot);
+  src: url(/build//assets/fonts/9da736fc9fa1d76ff7006903dba725fa.eot?#iefix)
+      format('embedded-opentype'),
+    url(/build//assets/fonts/902b9773f1a163f7e34da23599e00dfc.woff2)
+      format('woff2'),
+    url(/build//assets/fonts/2d8279116486215d80d3a141792cdc77.woff)
+      format('woff'),
+    url(/build//assets/fonts/cd506924d2105f42756ba09c5b118ac0.ttf)
+      format('truetype'),
+    url(/build//assets/images/GTWalsheimProLight.svg#GTWalsheimProLight)
+      format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GTWalsheimProMedium';
+  src: url(/build//assets/fonts/5651119e356f557bd53b08bf3b565ad0.eot);
+  src: url(/build//assets/fonts/5651119e356f557bd53b08bf3b565ad0.eot?#iefix)
+      format('embedded-opentype'),
+    url(/build//assets/fonts/3538d5963fa65c55752bc8f196b779fc.woff2)
+      format('woff2'),
+    url(/build//assets/fonts/9409859c36469dd09b4a57a833e4b497.woff)
+      format('woff'),
+    url(/build//assets/fonts/5fba8c52b23c4767adda3614663a5f56.ttf)
+      format('truetype'),
+    url(/build//assets/images/GTWalsheimProMedium.svg#GTWalsheimProMedium)
+      format('svg');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GTWalsheimProBold';
+  src: url(/build//assets/fonts/717c8062677c7dd92d3eed9d498acd65.eot);
+  src: url(/build//assets/fonts/717c8062677c7dd92d3eed9d498acd65.eot?#iefix)
+      format('embedded-opentype'),
+    url(/build//assets/fonts/6747ef16b06e225de87eb46522f4f2e6.woff2)
+      format('woff2'),
+    url(/build//assets/fonts/9ce9dfa75dcaf2a9626617d12d89af5f.woff)
+      format('woff'),
+    url(/build//assets/fonts/2f567d3e1382901de112e46a44338e33.ttf)
+      format('truetype'),
+    url(/build//assets/images/GTWalsheimProBold.svg#GTWalsheimProBold)
+      format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GTWalsheimProMedium-Oblique';
+  src: url(/build//assets/fonts/78175766e2473c4b935b895e68d7d766.eot);
+  src: url(/build//assets/fonts/78175766e2473c4b935b895e68d7d766.eot?#iefix)
+      format('embedded-opentype'),
+    url(/build//assets/fonts/d4c5ed32431681c4722ed138631a7e2d.woff2)
+      format('woff2'),
+    url(/build//assets/fonts/1141472eb4d1deeb15b8fa19be85ebfb.woff)
+      format('woff'),
+    url(/build//assets/fonts/a30c4537afad5185c85b81d94a638825.ttf)
+      format('truetype'),
+    url(/build//assets/images/GTWalsheimProMedium-Oblique.svg#GTWalsheimProMedium-Oblique)
+      format('svg');
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'GTWalsheimProBold-Oblique';
+  src: url(/build//assets/fonts/3999234dc515c281f39d52a1900d1477.eot);
+  src: url(/build//assets/fonts/3999234dc515c281f39d52a1900d1477.eot?#iefix)
+      format('embedded-opentype'),
+    url(/build//assets/fonts/226488a81b04f36fe66b6a3a1b4afb7c.woff2)
+      format('woff2'),
+    url(/build//assets/fonts/b7d7c0003582476d47f7b559d80ea7b3.woff)
+      format('woff'),
+    url(/build//assets/fonts/96d724ae094bd8561e20b058012033a8.ttf)
+      format('truetype'),
+    url(/build//assets/images/GTWalsheimProBold-Oblique.svg#GTWalsheimProBold-Oblique)
+      format('svg');
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'GTWalsheimProBlack';
+  src: url(/build//assets/fonts/f48a0331374a14e44a14602ec55be325.eot);
+  src: url(/build//assets/fonts/f48a0331374a14e44a14602ec55be325.eot?#iefix)
+      format('embedded-opentype'),
+    url(/build//assets/fonts/83389525cf411057fdfd0ae90b2d62d7.woff2)
+      format('woff2'),
+    url(/build//assets/fonts/67e6f8c251b3678c9751c7e86a4f7407.woff)
+      format('woff'),
+    url(/build//assets/fonts/30ed7597997a2e47a9ed187fd8ad0ea4.ttf)
+      format('truetype'),
+    url(/build//assets/images/GTWalsheimProBlack.svg#GTWalsheimProBlack)
+      format('svg');
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GTWalsheimProUltraBold-Oblique';
+  src: url(/build//assets/fonts/580d85f38c0de813569bc12be21dc74e.eot);
+  src: url(/build//assets/fonts/580d85f38c0de813569bc12be21dc74e.eot?#iefix)
+      format('embedded-opentype'),
+    url(/build//assets/fonts/c1b3ba3672ada2de6651c6e204a1b3d6.woff2)
+      format('woff2'),
+    url(/build//assets/fonts/5b29ce7db6b522000a040f4037c3ff2a.woff)
+      format('woff'),
+    url(/build//assets/fonts/9483bdd3d805a7a477d4d0b33701b233.ttf)
+      format('truetype'),
+    url(/build//assets/images/GTWalsheimProUltraBold-Oblique.svg#GTWalsheimProUltraBold-Oblique)
+      format('svg');
+  font-weight: 800;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'GTWalsheimProRegular';
+  src: url(/build//assets/fonts/93d4f66c3387365db0bfab2582ad41f5.eot);
+  src: url(/build//assets/fonts/93d4f66c3387365db0bfab2582ad41f5.eot?#iefix)
+      format('embedded-opentype'),
+    url(/build//assets/fonts/6ced0199e593600d27ec286b63c83b09.woff2)
+      format('woff2'),
+    url(/build//assets/fonts/4fcce1087925ce6170869fc4916d671d.woff)
+      format('woff'),
+    url(/build//assets/fonts/35bf2c0b9746db8e58af32bc9083dd56.ttf)
+      format('truetype'),
+    url(/build//assets/images/GTWalsheimProRegular.svg#GTWalsheimProRegular)
+      format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GTWalsheimProThin';
+  src: url(/build//assets/fonts/838daae21abe7d08911776bc86f33c2c.eot);
+  src: url(/build//assets/fonts/838daae21abe7d08911776bc86f33c2c.eot?#iefix)
+      format('embedded-opentype'),
+    url(/build//assets/fonts/4bb7a5fe1cf7e5f90cf0f2dd56674b93.woff2)
+      format('woff2'),
+    url(/build//assets/fonts/4527886ac6dff75d1b0cd2f06e4e74c7.woff)
+      format('woff'),
+    url(/build//assets/fonts/4faf0d1452053ee264d63c97e3ee9134.ttf)
+      format('truetype'),
+    url(/build//assets/images/GTWalsheimProThin.svg#GTWalsheimProThin)
+      format('svg');
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GTWalsheimProUltraLight';
+  src: url(/build//assets/fonts/452f29a9b5cbff1dd0a4487e258ebd34.eot);
+  src: url(/build//assets/fonts/452f29a9b5cbff1dd0a4487e258ebd34.eot?#iefix)
+      format('embedded-opentype'),
+    url(/build//assets/fonts/504bd738575a275b81f9c22d90c3b868.woff2)
+      format('woff2'),
+    url(/build//assets/fonts/4835e94925f27b391a0dc75e99fbbc6d.woff)
+      format('woff'),
+    url(/build//assets/fonts/4883e880f564823ba6b7081bd0db37f4.ttf)
+      format('truetype'),
+    url(/build//assets/images/GTWalsheimProUltraLight.svg#GTWalsheimProUltraLight)
+      format('svg');
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GTWalsheimProThin-Oblique';
+  src: url(/build//assets/fonts/b3cab12cbaad9180f63df3ee6143e308.eot);
+  src: url(/build//assets/fonts/b3cab12cbaad9180f63df3ee6143e308.eot?#iefix)
+      format('embedded-opentype'),
+    url(/build//assets/fonts/305c178522fa29c9dd0c7d7b324dced9.woff2)
+      format('woff2'),
+    url(/build//assets/fonts/c9644ff444d323e1c4eee16fd2f189be.woff)
+      format('woff'),
+    url(/build//assets/fonts/65f5acb0b0427f1627156cb1fc8a1777.ttf)
+      format('truetype'),
+    url(/build//assets/images/GTWalsheimProThin-Oblique.svg#GTWalsheimProThin-Oblique)
+      format('svg');
+  font-weight: 100;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'GTWalsheimProRegular-Oblique';
+  src: url(/build//assets/fonts/2d7da03dab71b91641d25cc6d0d7c489.eot);
+  src: url(/build//assets/fonts/2d7da03dab71b91641d25cc6d0d7c489.eot?#iefix)
+      format('embedded-opentype'),
+    url(/build//assets/fonts/800688d37e27ca0801bc840a842fa407.woff2)
+      format('woff2'),
+    url(/build//assets/fonts/3809e86f44bfc875a3167325ae2eb843.woff)
+      format('woff'),
+    url(/build//assets/fonts/8ac973790d1b4179f9a117a7a9271788.ttf)
+      format('truetype'),
+    url(/build//assets/images/GTWalsheimProRegular-Oblique.svg#GTWalsheimProRegular-Oblique)
+      format('svg');
+  font-weight: normal;
+  font-style: italic;
+}
 html {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -7449,10 +7773,10 @@ nav .active a span::before {
   left: auto;
 }
 .slick-prev:before {
-  content: 'â†';
+  content: '←';
 }
 [dir='rtl'] .slick-prev:before {
-  content: 'â†’';
+  content: '→';
 }
 .slick-next {
   right: -25px;
@@ -7462,10 +7786,10 @@ nav .active a span::before {
   left: -25px;
 }
 .slick-next:before {
-  content: 'â†’';
+  content: '→';
 }
 [dir='rtl'] .slick-next:before {
-  content: 'â†';
+  content: '←';
 }
 .slick-dotted.slick-slider {
   margin-bottom: 30px;
@@ -7519,7 +7843,7 @@ nav .active a span::before {
   left: 0;
   width: 20px;
   height: 20px;
-  content: 'â€¢';
+  content: '•';
   text-align: center;
   opacity: 0.25;
   color: black;
