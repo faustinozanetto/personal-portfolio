@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Theme } from '../../styles';
 import useDarkMode from 'use-dark-mode';
+
+const { colors } = Theme;
 
 const DarkModeContainer = styled.div`
   display: block;
@@ -26,12 +29,13 @@ const DarkModeButton = styled.button`
   border-radius: 50%;
   color: inherit;
   cursor: pointer;
+  transition: all 200ms ease-in-out;
   @media (min-width: 992px) {
-    color: #001e2f;
-
     &:hover {
       background-color: ${(props) =>
-        props.darkMode ? 'red' : 'blue'} !important;
+        props.darkMode
+          ? 'rgba(217, 217, 217, 0.25)'
+          : 'rgba(64, 66, 65, 0.25)'} !important;
     }
   }
 `;
@@ -50,6 +54,8 @@ const DarkModeSpan = styled.span`
 const DarkModeSvg = styled.svg`
   margin: auto;
   fill: currentColor;
+  color: ${(props) =>
+    props.darkMode ? `${colors.textDark}` : `${colors.textLight}`} !important;
 `;
 
 const DarkModeOn = styled.path``;
@@ -63,6 +69,7 @@ const DarkModeSwitch = () => {
       <DarkModeButton onClick={darkMode.toggle} darkMode={darkMode.value}>
         <DarkModeSpan>toggle dark mode</DarkModeSpan>
         <DarkModeSvg
+          darkMode={darkMode.value}
           xmlns='http://www.w3.org/2000/svg'
           width='24'
           height='24'

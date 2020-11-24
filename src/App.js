@@ -2,7 +2,6 @@ import React, { lazy, useState, Suspense } from 'react';
 import { Route, Redirect, Switch, useLocation } from 'react-router-dom';
 import useDarkMode from 'use-dark-mode';
 import styled from 'styled-components';
-import './App.scss';
 
 const GlobalStyle = lazy(() => import('./styles/GlobalStyle'));
 const Navbar = lazy(() => import('./components/navbar/Navbar'));

@@ -31,8 +31,27 @@ const NavbarInnerHeader = styled.div`
   }
 `;
 
+const NavbarContainer = styled.nav``;
+
+const NavbarButton = styled.button`
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  display: none;
+  color: ${(props) =>
+    props.darkMode ? `${colors.textDark}` : `${colors.textLight}`};
+
+  @media (max-width: 991px) {
+    display: block;
+    padding: 8px 10px;
+    position: relative;
+    z-index: 101;
+  }
+`;
+
 const NavbarLogo = styled.h2`
-  color: black;
+  color: ${(props) =>
+    props.darkMode ? `${colors.textDark}` : `${colors.textLight}`} !important;
   font-weight: 600;
   position: relative;
   z-index: 101;
@@ -50,7 +69,7 @@ const NavbarContent = styled.div`
     display: ${(props) => (props.collapsedMenu ? 'flex' : ' none')};
     position: fixed;
     top: 0;
-    bottom: 0;
+    bottom: 50px;
     left: 0;
     right: 0;
     padding-top: 100px;
@@ -59,7 +78,10 @@ const NavbarContent = styled.div`
     align-items: stretch;
     z-index: 100;
     color: #fff;
-    background-color: #001e2f;
+    background-color: ${(props) =>
+      props.darkMode
+        ? `${colors.backgroundDark}`
+        : `${colors.backgroundLight}`} !important;
   }
 `;
 
@@ -105,7 +127,10 @@ const NavbarLink = styled(Link)`
 
   &:hover,
   &:focus {
-    color: ${colors.textHoverLight};
+    color: ${(props) =>
+      props.darkMode
+        ? `${colors.textHoverDark}`
+        : `${colors.textHoverLight}`} !important;
   }
 `;
 
@@ -118,11 +143,11 @@ const NewNavbar = () => {
     if (body.classList.contains('nav-open')) {
       body.classList.remove('nav-open');
       body.classList.remove('no-scroll');
-      setCollapsedMenu(true);
+      setCollapsedMenu(false);
     } else {
       body.classList.add('nav-open');
       body.classList.add('no-scroll');
-      setCollapsedMenu(false);
+      setCollapsedMenu(true);
     }
   };
 
@@ -131,63 +156,57 @@ const NewNavbar = () => {
       <NavbarHeader>
         <NavbarInnerHeader>
           <NavbarItem>
-            <NavbarLink to='/projects'>
-              <NavbarLogo>Portfolio</NavbarLogo>
+            <NavbarLink to='/projects' darkMode={darkMode.value}>
+              <NavbarLogo darkMode={darkMode.value}>Portfolio</NavbarLogo>
             </NavbarLink>
           </NavbarItem>
-          <div className='header__navigation'>
-            <nav
-              className='nav js-nav'
-              role='navigation'
-              tabIndex='-1'
-              aria-label='main menu'
+          <NavbarContainer>
+            <NavbarButton
+              onClick={toggleCollapsedMenu}
+              darkMode={darkMode.value}
             >
-              <button
-                className='nav__togglebtn js-nav-toggle'
-                aria-expanded='false'
-                aria-controls='nav-menu'
-                onClick={toggleCollapsedMenu}
-              >
-                <span className='sr-only'>toggle menu</span>
-                <span className='menuicon'>
-                  <span className='menuicon__bar'></span>
-                  <span className='menuicon__bar'></span>
-                  <span className='menuicon__bar'></span>
-                  <span className='menuicon__bar'></span>
-                </span>
-              </button>
-              <NavbarContent collapsedMenu={collapsedMenu}>
-                <NavbarItems collapsedMenu={collapsedMenu}>
-                  <NavbarItem className='nav__item'>
-                    <NavbarLink to='/projects' darkMode={darkMode.value}>
-                      Projects
-                    </NavbarLink>
-                  </NavbarItem>
-                  <NavbarItem className='nav__item'>
-                    <NavbarLink to='/blog' darkMode={darkMode.value}>
-                      Blog
-                    </NavbarLink>
-                  </NavbarItem>
-                  <NavbarItem className='nav__item'>
-                    <NavbarLink to='/skills' darkMode={darkMode.value}>
-                      Skills
-                    </NavbarLink>
-                  </NavbarItem>
-                  <NavbarItem className='nav__item'>
-                    <NavbarLink to='/about' darkMode={darkMode.value}>
-                      About
-                    </NavbarLink>
-                  </NavbarItem>
-                  <NavbarItem className='nav__item'>
-                    <NavbarLink to='/contact' darkMode={darkMode.value}>
-                      Contact
-                    </NavbarLink>
-                  </NavbarItem>
-                </NavbarItems>
-                <DarkModeSwitch />
-              </NavbarContent>
-            </nav>
-          </div>
+              <span className='sr-only'>toggle menu</span>
+              <span className='menuicon'>
+                <span className='menuicon__bar'></span>
+                <span className='menuicon__bar'></span>
+                <span className='menuicon__bar'></span>
+                <span className='menuicon__bar'></span>
+              </span>
+            </NavbarButton>
+            <NavbarContent
+              collapsedMenu={collapsedMenu}
+              darkMode={darkMode.value}
+            >
+              <NavbarItems collapsedMenu={collapsedMenu}>
+                <NavbarItem className='nav__item'>
+                  <NavbarLink to='/projects' darkMode={darkMode.value}>
+                    Projects
+                  </NavbarLink>
+                </NavbarItem>
+                <NavbarItem className='nav__item'>
+                  <NavbarLink to='/blog' darkMode={darkMode.value}>
+                    Blog
+                  </NavbarLink>
+                </NavbarItem>
+                <NavbarItem className='nav__item'>
+                  <NavbarLink to='/skills' darkMode={darkMode.value}>
+                    Skills
+                  </NavbarLink>
+                </NavbarItem>
+                <NavbarItem className='nav__item'>
+                  <NavbarLink to='/about' darkMode={darkMode.value}>
+                    About
+                  </NavbarLink>
+                </NavbarItem>
+                <NavbarItem className='nav__item'>
+                  <NavbarLink to='/contact' darkMode={darkMode.value}>
+                    Contact
+                  </NavbarLink>
+                </NavbarItem>
+              </NavbarItems>
+              <DarkModeSwitch />
+            </NavbarContent>
+          </NavbarContainer>
         </NavbarInnerHeader>
       </NavbarHeader>
     </React.Fragment>

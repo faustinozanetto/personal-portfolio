@@ -19,8 +19,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: ${Theme.fonts.bodyFont};
     font-size: ${Theme.fonts.normalFontSize};
     font-weight: ${Theme.fontWeights.medium};
-    background-color: ${Theme.colors.firstColorLighten};
-    color: ${Theme.colors.textColor};
+    background-color: ${Theme.colors.backgroundLight};
     line-height: 1.6;
   }
 
