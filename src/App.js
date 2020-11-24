@@ -54,7 +54,7 @@ const App = () => {
     <React.Fragment>
       <AppContainer>
         <GlobalStyle />
-        <Navbar pages={pages} {...{ darkMode }} />
+        <Navbar />
         {/* <MainContainer>
           <Suspense fallback={<div />}>
             <Switch location={location}>

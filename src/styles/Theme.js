@@ -1,10 +1,11 @@
 const Theme = {
   colors: {
-    firstColor: '#3e0e12',
-    firstColorDark: '#2f0a0d',
-    textColor: '#524748',
-    firstColorLight: '#7b6f71',
-    firstColorLighten: '#fbf9f9',
+    backgroundLight: '#eee2dc',
+    backgroundDark: '#121212',
+    textLight: '#000',
+    textDark: '#fff',
+    textHoverLight: 'red',
+    textHoverDark: 'blue',
   },
 
   fonts: {

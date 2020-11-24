@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     scroll-behavior: smooth;
+    transition: all 500ms ease-in-out;
   }
 
   body {
@@ -25,9 +26,11 @@ const GlobalStyle = createGlobalStyle`
 
   h1,
   h2,
-  h3,
+  h3
+  li,
   ul {
     margin: 0;
+
   }
 
   h2,
@@ -48,6 +51,19 @@ const GlobalStyle = createGlobalStyle`
     max-width: 100%;
     height: auto;
     display: block;
+  }
+
+  /* Dark mode styling */
+  .dark-mode {
+    background-color: ${Theme.colors.backgroundDark} !important;
+
+    /* h2, a, svg {
+      color: ${Theme.colors.textDark} !important;
+    } */
+
+    /* a:hover {
+      color: ${Theme.colors.textHoverDark} !important;
+    } */
   }
 `;
 
