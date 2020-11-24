@@ -1,8 +1,6 @@
 import React from 'react';
 import BackupIcon from '@material-ui/icons/Backup';
 import styled from 'styled-components';
-import { Theme } from '../../style';
-const { colors } = Theme;
 
 const CardContainer = styled.div`
   display: flex;

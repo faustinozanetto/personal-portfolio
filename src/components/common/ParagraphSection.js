@@ -70,20 +70,14 @@ const Text = styled.p`
   }
 `;
 
-const ParagraphSection = () => {
+const ParagraphSection = ({ title, text }) => {
   return (
     <AnimatedContainer>
       <SectionContainer>
         <Container>
-          <Title>TITLE</Title>
+          <Title>{title}</Title>
           <TextContent>
-            <Text>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae
-              placeat voluptatibus eum dolor? Molestiae ipsam, debitis ex atque
-              quis delectus dolorem possimus placeat velit, sit doloremque sunt
-              nostrum nisi magnam saepe labore voluptas deleniti provident
-              soluta. Itaque a asperiores repellat?
-            </Text>
+            <Text>{text}</Text>
           </TextContent>
         </Container>
       </SectionContainer>

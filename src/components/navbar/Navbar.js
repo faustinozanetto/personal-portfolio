@@ -1,27 +1,76 @@
 import React, { useState, lazy } from 'react';
 import { Link } from 'react-router-dom';
+import WbIncandescentIcon from '@material-ui/icons/WbIncandescent';
 import styled from 'styled-components';
 import './Navbar.scss';
 
 const ThemeSwitcher = lazy(() => import('../theme/ThemeSwitcher'));
 
+const NavbarHeader = styled.header`
+  position: relative;
+`;
+
 const NavbarLogo = styled.h2`
-  color: white;
+  color: black;
   font-weight: 600;
+  position: relative;
+  z-index: 101;
+  padding: 1rem;
+  line-height: 1;
+  text-decoration: none;
+`;
+
+const NavbarContent = styled.div`
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 991px) {
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    display: ${(props) => (props.collapsedMenu ? 'flex' : ' none')};
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-top: 100px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    z-index: 100;
+    color: #fff;
+    background-color: #001e2f;
+  }
+`;
+
+const NavbarItems = styled.ul`
+  display: flex;
+  @media (max-width: 991px) {
+    display: ${(props) => (props.collapsedMenu ? 'flex' : 'none')};
+    flex: 1 1;
+    /* flex-direction: ${(props) =>
+      props.collapsedMenu ? 'row' : 'column'}; */
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 
 const NavbarItem = styled.li`
-  font-weight: 600;
-  margin-left: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  line-height: 1;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  font-size: 18px;
 
   @media (max-width: 991px) {
     margin: 0;
+    align-items: center;
     font-size: 1.25rem;
-    -webkit-animation-name: fadeInUp;
     animation-name: fadeInUp;
-    -webkit-animation-duration: 0.4s;
     animation-duration: 0.4s;
-    -webkit-animation-fill-mode: backwards;
     animation-fill-mode: backwards;
   }
 `;
@@ -30,9 +79,9 @@ const NavbarLink = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
+  color: black;
   padding: 1rem;
   line-height: 1;
-  color: currentColor;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
 
@@ -40,9 +89,7 @@ const NavbarLink = styled(Link)`
     padding: 1.5rem;
     margin-left: 10rem;
     margin-right: 10rem;
-    border-radius: 50px;
     transition: margin 0.3s ease-in-out;
-
     &:hover,
     &:focus {
       color: inherit;
@@ -54,73 +101,42 @@ const NavbarLink = styled(Link)`
   }
 `;
 
-const NavbarContact = styled(Link)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  line-height: 1;
-  color: currentColor;
-  text-decoration: none;
-  transition: all 0.2s ease-in-out;
+const DarkModeContainer = styled.div`
+  display: block;
+  margin: auto;
 
   @media (min-width: 992px) {
-    border-radius: 20rem;
-    padding: 1rem;
-    background: linear-gradient(#6e3398, #6b5aed);
-
-    &:hover,
-    &:focus {
-      background: linear-gradient(#6e3398, red);
-    }
-  }
-
-  @media (max-width: 991px) {
-    padding: 1.5rem;
-    margin-left: 10rem;
-    margin-right: 10rem;
-    border-radius: 50px;
-    transition: margin 0.3s ease-in-out;
-
-    &:hover,
-    &:focus {
-      color: inherit;
-      margin-left: 20rem;
-      margin-right: 20rem;
-      border-radius: 50px;
-      background: linear-gradient(#6e3398, #6b5aed);
-    }
+    margin: 0 0 0 1.5rem;
+    -webkit-transform: translateY(-1px);
+    transform: translateY(-1px);
   }
 `;
 
 const NewNavbar = ({ pages, darkMode }) => {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsedMenu, setCollapsedMenu] = useState(false);
 
   const toggleCollapsedMenu = () => {
     const body = document.querySelector('body');
     if (body.classList.contains('nav-open')) {
       body.classList.remove('nav-open');
       body.classList.remove('no-scroll');
-      setCollapsed(true);
+      setCollapsedMenu(true);
     } else {
       body.classList.add('nav-open');
       body.classList.add('no-scroll');
-      setCollapsed(false);
+      setCollapsedMenu(false);
     }
   };
 
   return (
     <React.Fragment>
-      <header className='header' role='banner'>
+      <NavbarHeader>
         <div className='header__inner container container--full'>
-          <a
-            href='/en'
-            className='header__brand'
-            rel='home'
-            aria-label='Codista'
-          >
-            <NavbarLogo>PORTFOLIO</NavbarLogo>
-          </a>
+          <NavbarItem>
+            <NavbarLink to='/projects'>
+              <h2>Portfolio</h2>
+            </NavbarLink>
+          </NavbarItem>
           <div className='header__navigation'>
             <nav
               className='nav js-nav'
@@ -142,24 +158,27 @@ const NewNavbar = ({ pages, darkMode }) => {
                   <span className='menuicon__bar'></span>
                 </span>
               </button>
-              <div className='nav__content'>
-                <ul className='nav__menu' id='nav-menu'>
+              <NavbarContent collapsedMenu={collapsedMenu}>
+                <NavbarItems collapsedMenu={collapsedMenu}>
                   <NavbarItem className='nav__item'>
-                    <NavbarLink to='/en/projects/'>Projects</NavbarLink>
+                    <NavbarLink to='/projects'>Projects</NavbarLink>
                   </NavbarItem>
                   <NavbarItem className='nav__item'>
-                    <NavbarLink to='/en/services/'>Blog</NavbarLink>
+                    <NavbarLink to='/blog'>Blog</NavbarLink>
                   </NavbarItem>
                   <NavbarItem className='nav__item'>
-                    <NavbarLink to='/en/team/'>Skills</NavbarLink>
+                    <NavbarLink to='/skills'>Skills</NavbarLink>
                   </NavbarItem>
                   <NavbarItem className='nav__item'>
-                    <NavbarLink to='/en/blog/'>About</NavbarLink>
+                    <NavbarLink to='/about'>About</NavbarLink>
                   </NavbarItem>
                   <NavbarItem className='nav__item'>
-                    <NavbarContact to='/en/contact/'>Contact</NavbarContact>
+                    <NavbarLink to='/contact'>Contact</NavbarLink>
                   </NavbarItem>
-                </ul>
+                </NavbarItems>
+                <DarkModeContainer>
+                  <WbIncandescentIcon />
+                </DarkModeContainer>
                 <div className='nav__darkmode'>
                   <button
                     className='lightswitch js-darkmode-toggle'
@@ -185,11 +204,11 @@ const NewNavbar = ({ pages, darkMode }) => {
                     </svg>
                   </button>
                 </div>
-              </div>
+              </NavbarContent>
             </nav>
           </div>
         </div>
-      </header>
+      </NavbarHeader>
     </React.Fragment>
   );
 };

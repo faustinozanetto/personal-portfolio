@@ -4,15 +4,13 @@ import useDarkMode from 'use-dark-mode';
 import styled from 'styled-components';
 import './App.scss';
 
-const GlobalStyle = lazy(() => import('./style/GlobalStyle'));
-
+const GlobalStyle = lazy(() => import('./styles/GlobalStyle'));
 const Navbar = lazy(() => import('./components/navbar/Navbar'));
 const Home = lazy(() => import('./pages/Home'));
-const About = lazy(() => import('./pages/About'));
 const Blog = lazy(() => import('./pages/Blog'));
 const Contact = lazy(() => import('./pages/Contact'));
 
-const NewFooter = lazy(() => import('./components/footer/NewFooter'));
+const Footer = lazy(() => import('./components/footer/Footer'));
 
 const MainContainer = styled.div`
   align-self: center;
@@ -21,11 +19,11 @@ const MainContainer = styled.div`
 `;
 
 const AppContainer = styled.div`
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   position: relative;
   min-height: 100vh;
-  box-sizing: border-box;
+  box-sizing: border-box; */
 `;
 
 const App = () => {
@@ -46,12 +44,6 @@ const App = () => {
       showInNavbar: true,
     },
     {
-      pageLink: '/about',
-      view: About,
-      displayName: 'About',
-      showInNavbar: true,
-    },
-    {
       pageLink: '/contact',
       view: Contact,
       displayName: 'Contact',
@@ -61,9 +53,9 @@ const App = () => {
   return (
     <React.Fragment>
       <AppContainer>
-        <Navbar pages={pages} {...{ darkMode }} />
         <GlobalStyle />
-        <MainContainer>
+        <Navbar pages={pages} {...{ darkMode }} />
+        {/* <MainContainer>
           <Suspense fallback={<div />}>
             <Switch location={location}>
               {pages.map((page, index) => {
@@ -79,10 +71,10 @@ const App = () => {
               <Redirect to='/' />
             </Switch>
           </Suspense>
-        </MainContainer>
-        <Suspense fallback={<div />}>
-          <NewFooter />
-        </Suspense>
+        </MainContainer> */}
+        {/* <Suspense fallback={<div />}>
+          <Footer />
+        </Suspense> */}
       </AppContainer>
     </React.Fragment>
   );

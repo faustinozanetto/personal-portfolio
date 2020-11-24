@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Theme } from '../../style';
 import projectImage from '../../assets/images/project1.png';
-const { colors } = Theme;
 
 const CardContainer = styled.div`
   display: flex;
@@ -14,7 +12,7 @@ const CardContainer = styled.div`
   width: 350px;
   height: 220px;
   box-sizing: border-box;
-  margin: 1rem 1rem; */ */
+  margin: 1rem 1rem; */
 `;
 
 const CardContentContainer = styled.div`

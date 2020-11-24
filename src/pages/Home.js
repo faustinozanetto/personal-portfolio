@@ -1,12 +1,14 @@
 import React, { lazy, Suspense } from 'react';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
+import aboutData from '../data/about.json';
 
 const LanguageCard = lazy(() => import('../components/card/LanguageCard'));
 const RecentWorkCard = lazy(() => import('../components/card/RecentWorkCard'));
 const ParagraphSection = lazy(() =>
   import('../components/common/ParagraphSection')
 );
+const ContactForm = lazy(() => import('../components/contact/ContactForm'));
 
 const HomeContainer = styled.div`
   display: flex;
@@ -64,45 +66,16 @@ const Home = () => {
         <title>Home - Personal Portfolio</title>
       </Helmet>
       <HomeContainer>
-        <ParagraphSection></ParagraphSection>
-        <ParagraphSection></ParagraphSection>
-        <ParagraphSection></ParagraphSection>
-        <ParagraphSection></ParagraphSection>
-        <ParagraphSection></ParagraphSection>
-        {/* <HomeLeft>
-          <h3>Welcome to my portfolio</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem
-            officia nesciunt magni molestiae mollitia adipisci qui rem at veniam
-            quam cumque, similique ratione laborum ut nulla fugit optio
-            necessitatibus saepe asperiores. Facere, ut! Qui cupiditate hic
-            voluptates velit, quis eaque distinctio consequuntur neque optio
-            alias vitae obcaecati in quaerat dicta dolore molestiae rem dolorum
-            eius! Est, eos explicabo veritatis sequi repudiandae odio, expedita
-            atque nobis doloribus voluptatibus ratione aliquam, dolorem quidem
-            excepturi dolores enim! Animi laboriosam distinctio fugiat
-            accusamus, eligendi vero. Ipsam inventore illum minima. Maiores
-            nesciunt error reprehenderit quaerat? Placeat deserunt voluptas est
-            vitae itaque doloribus ea quam quis.
-          </p>
-        </HomeLeft>
-        <CardsContainer>
-          <LanguageCard cardTitle='Java' />
-          <LanguageCard cardTitle='Python' />
-          <LanguageCard cardTitle='JavaScript' />
-        </CardsContainer>{' '}
-        
-        <RecentWorkContainer>
-          <RecentWorkTitle>My Recent Work</RecentWorkTitle>
-          <RecentWorkSubtitle>
-            Here are a few design projects I've worked on recently. Want to see
-            more?
-          </RecentWorkSubtitle>{' '}
-          
-          <RecentWorkCardsContainer>
-            <RecentWorkCard />
-          </RecentWorkCardsContainer>
-        </RecentWorkContainer> */}
+        {aboutData.map((aboutInfo, index) => {
+          return (
+            <ParagraphSection
+              key={index}
+              style={{ animationDelay: `${0.5 + index * 0.1}s` }}
+              text={aboutInfo.text}
+            ></ParagraphSection>
+          );
+        })}
+        <ContactForm />
       </HomeContainer>
     </React.Fragment>
   );
