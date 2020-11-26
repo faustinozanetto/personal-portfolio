@@ -34,16 +34,15 @@ const AnimatedContainer = styled.div`
 `;
 
 const Container = styled.div`
-  padding: 2rem;
+  padding: 1rem 1.5rem 1rem 1.5rem;
 
   @media only screen and (max-width: 768px) {
-    padding: 1rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
   }
 `;
 
 const Title = styled.h1`
   font-size: 2.5rem;
-  line-height: 1.3em;
 
   @media only screen and (max-width: 768px) {
     font-size: 1.75rem;
@@ -55,7 +54,7 @@ type TextProps = {
 };
 
 const Text = styled.p<TextProps>`
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   text-align: justify;
   text-justify: justify;
   color: ${(props) =>
@@ -63,7 +62,7 @@ const Text = styled.p<TextProps>`
   transition: font-size 0.2s ease-in-out;
 
   @media only screen and (max-width: 768px) {
-    font-size: 1.25rem;
+    font-size: 1rem;
   }
 `;
 

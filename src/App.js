@@ -19,7 +19,13 @@ const AppContainer = styled.div`
   box-sizing: border-box;
 `;
 
-const MainContainer = styled.div``;
+const MainContainer = styled.div`
+  padding: 0rem 5% 0rem 5%;
+
+  @media only screen and (max-width: 768px) {
+    padding: 0rem 2% 0rem 2%;
+  }
+`;
 
 const App = () => {
   const darkMode = useDarkMode(false);

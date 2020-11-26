@@ -14,11 +14,6 @@ const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 1rem 4rem 1rem 4rem;
-
-  @media screen and (max-width: 768px) {
-    padding: 1rem 2rem 1rem 2rem;
-  }
 `;
 
 // const HomeLeft = styled.div`

@@ -10,17 +10,20 @@ const { colors } = Theme;
 const FooterWrapper = styled.footer`
   display: flex;
   flex-direction: column;
-  margin-top: 4rem;
+  margin-top: 2rem;
   width: 100%;
   background-color: ${colors.footerBackgroundLight};
+  /* position: absolute;
+  bottom: 0; */
+  overflow: hidden;
 `;
 
 const FooterContainer = styled.div`
   width: 100%;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -52,10 +55,8 @@ const FooterNav = styled.nav`
 
 const FooterNavList = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  grid-column-gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   column-gap: 1rem;
-  grid-row-gap: 0.5rem;
   row-gap: 0.5rem;
   margin: 0;
 
@@ -96,6 +97,10 @@ const FooterNavLink = styled(Link)`
   &:focus {
     color: ${colors.textHoverDark};
   }
+
+  @media only screen and (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 const FooterSocial = styled.div`
@@ -122,6 +127,10 @@ const FooterSocialLink = styled.a`
 
 const FooterCopyright = styled.p`
   color: rgba(255, 255, 255, 0.7);
+
+  @media only screen and (max-width: 768px) {
+    font-size: 10px;
+  }
 `;
 
 type FooterProps = {

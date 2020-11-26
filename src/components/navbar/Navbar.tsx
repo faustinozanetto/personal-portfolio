@@ -9,6 +9,7 @@ const DarkModeSwitch = lazy(() => import('./DarkModeSwitch'));
 const NavbarHeader = styled.header`
   position: relative;
   flex: none;
+  padding-top: 2rem;
 `;
 
 const NavbarInnerHeader = styled.div`
@@ -18,11 +19,14 @@ const NavbarInnerHeader = styled.div`
   padding-top: 1rem;
   padding-bottom: 1rem;
   width: 100%;
-  max-width: 1280px;
   padding-left: 1rem;
   padding-right: 1rem;
   margin-left: auto;
   margin-right: auto;
+
+  @media only screen and (min-width: 768px) {
+    max-width: 1450px;
+  }
 `;
 
 const NavbarLogoContainer = styled.div`
@@ -191,7 +195,7 @@ const NavbarContent = styled.div<NavbarContentProps>`
     display: ${(props) => (props.collapsedMenu ? 'flex' : ' none')};
     position: fixed;
     top: 0;
-    bottom: 50px;
+    bottom: 0;
     left: 0;
     right: 0;
     padding-top: 100px;
@@ -268,6 +272,9 @@ const NavbarLink = styled(Link)<NavbarLinkProps>`
       props.darkMode
         ? `${colors.textHoverDark}`
         : `${colors.textHoverLight}`} !important;
+  }
+  @media all and (orientation: landscape) {
+    font-size: 1rem;
   }
 `;
 
