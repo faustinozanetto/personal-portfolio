@@ -9,7 +9,7 @@ const Home = lazy(() => import('./pages/Home'));
 const Blog = lazy(() => import('./pages/Blog'));
 const Contact = lazy(() => import('./pages/Contact'));
 
-const NewFooter = lazy(() => import('./components/footer/NewFooter.tsx'));
+const Footer = lazy(() => import('./components/footer/Footer.tsx'));
 
 const AppContainer = styled.div`
   display: flex;
@@ -70,7 +70,7 @@ const App = () => {
           </Suspense>
         </MainContainer>
         <Suspense fallback={<div />}>
-          <NewFooter darkMode={darkMode} />
+          <Footer darkMode={darkMode} />
         </Suspense>
       </AppContainer>
     </React.Fragment>

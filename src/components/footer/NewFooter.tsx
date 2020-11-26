@@ -26,6 +26,10 @@ const FooterContainer = styled.div`
   margin-left: auto;
   box-sizing: border-box;
 
+  @media (min-width: 768px) {
+    max-width: 720px;
+  }
+
   @media (min-width: 1200px) {
     max-width: 1140px;
   }
@@ -63,7 +67,18 @@ const FooterBottomContent = styled.div`
   }
 `;
 
-const FooterBottomText = styled.p``;
+const FooterBottomText = styled.p`
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  text-align: center !important;
+`;
 
 const LinksWrapper = styled.div`
   position: relative;
@@ -179,7 +194,10 @@ const NewFooter = () => {
         </FooterTopContainer>
         <FooterBottomContainer>
           <FooterBottomContent>
-            <FooterBottomText></FooterBottomText>
+            <FooterBottomText>
+              Copyright ©2020 All rights reserved | This template is made with ♥
+              by Colorlib
+            </FooterBottomText>
           </FooterBottomContent>
         </FooterBottomContainer>
       </FooterContainer>

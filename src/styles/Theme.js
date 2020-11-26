@@ -6,7 +6,7 @@ const Theme = {
     textDark: '#fff',
     textHoverLight: 'red',
     textHoverDark: 'blue',
-    footerBackgroundLight: '#333030',
+    footerBackgroundLight: ' #000000;',
     footerBackgroundDark: '#ededed',
   },
 
