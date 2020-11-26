@@ -10,12 +10,15 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html {
+    margin: 0;
+    padding: 0;
     scroll-behavior: smooth;
     transition: all 500ms ease-in-out;
   }
 
   body {
-    margin: 3rem 0 0 0;
+    margin: 0;
+    padding: 0;
     font-family: ${Theme.fonts.bodyFont};
     font-size: ${Theme.fonts.normalFontSize};
     font-weight: ${Theme.fontWeights.medium};

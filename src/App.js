@@ -9,21 +9,17 @@ const Home = lazy(() => import('./pages/Home'));
 const Blog = lazy(() => import('./pages/Blog'));
 const Contact = lazy(() => import('./pages/Contact'));
 
-const Footer = lazy(() => import('./components/footer/Footer'));
-
-const MainContainer = styled.div`
-  align-self: center;
-  display: flex;
-  flex-direction: column;
-`;
+const NewFooter = lazy(() => import('./components/footer/NewFooter.tsx'));
 
 const AppContainer = styled.div`
-  /* display: flex;
+  display: flex;
   flex-direction: column;
   position: relative;
   min-height: 100vh;
-  box-sizing: border-box; */
+  box-sizing: border-box;
 `;
+
+const MainContainer = styled.div``;
 
 const App = () => {
   const darkMode = useDarkMode(false);
@@ -53,8 +49,8 @@ const App = () => {
     <React.Fragment>
       <AppContainer>
         <GlobalStyle />
-        <Navbar />
-        {/* <MainContainer>
+        <Navbar darkMode={darkMode} />
+        <MainContainer>
           <Suspense fallback={<div />}>
             <Switch location={location}>
               {pages.map((page, index) => {
@@ -62,7 +58,9 @@ const App = () => {
                   <Route
                     exact
                     path={page.pageLink}
-                    render={({ match }) => <page.view />}
+                    render={(props) => (
+                      <page.view {...props} darkMode={darkMode} />
+                    )}
                     key={index}
                   />
                 );
@@ -70,10 +68,10 @@ const App = () => {
               <Redirect to='/' />
             </Switch>
           </Suspense>
-        </MainContainer> */}
-        {/* <Suspense fallback={<div />}>
-          <Footer />
-        </Suspense> */}
+        </MainContainer>
+        <Suspense fallback={<div />}>
+          <NewFooter darkMode={darkMode} />
+        </Suspense>
       </AppContainer>
     </React.Fragment>
   );

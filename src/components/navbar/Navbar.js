@@ -1,14 +1,14 @@
 import React, { useState, lazy } from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Theme } from '../../styles';
-import useDarkMode from 'use-dark-mode';
-import './Navbar.scss';
+
 const { colors } = Theme;
 const DarkModeSwitch = lazy(() => import('./DarkModeSwitch.js'));
 
 const NavbarHeader = styled.header`
   position: relative;
+  flex: none;
 `;
 
 const NavbarInnerHeader = styled.div`
@@ -17,47 +17,148 @@ const NavbarInnerHeader = styled.div`
   align-items: center;
   padding-top: 1rem;
   padding-bottom: 1rem;
-
   width: 100%;
   max-width: 1280px;
   padding-left: 1rem;
   padding-right: 1rem;
   margin-left: auto;
   margin-right: auto;
+`;
 
-  @media (min-width: 768px) {
-    /* padding-left: 4rem;
-    padding-right: 4rem; */
+const NavbarLogoContainer = styled.div`
+  position: relative;
+  touch-action: manipulation;
+  padding-left: 2rem;
+
+  @media screen and (max-width: 768px) {
+    padding-left: 1rem;
   }
 `;
 
-const NavbarContainer = styled.nav``;
+const NavbarContainer = styled.nav`
+  display: block;
+  padding-right: 2rem;
+
+  @media screen and (max-width: 768px) {
+    padding-left: 1rem;
+  }
+`;
 
 const NavbarButton = styled.button`
   border: 0;
   padding: 0;
   background-color: transparent;
   display: none;
+  outline: none;
   color: ${(props) =>
-    props.darkMode ? `${colors.textDark}` : `${colors.textLight}`};
+    props.darkmode ? `${colors.textDark}` : `${colors.textLight}`};
 
   @media (max-width: 991px) {
     display: block;
-    padding: 8px 10px;
+    /* padding: 8px 10px; */
     position: relative;
     z-index: 101;
   }
 `;
 
+const NavbarButtonSpan = styled.span`
+  position: absolute;
+  outline: none;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+`;
+
+const NavbarMenuIcon = styled.span`
+  display: block;
+  outline: none;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  top: -2px;
+  transform: rotate(0deg);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  margin: 0 auto;
+
+  ${(props) =>
+    props.collapsedMenu &&
+    css`
+      top: 3px;
+      -webkit-transform: rotate(-180deg);
+      transform: rotate(-180deg);
+    `}
+`;
+
+const NavbarMenuIconBar = styled.span`
+  display: block;
+  position: absolute;
+  outline: none;
+  left: 0;
+  right: 0;
+  height: 4px;
+  width: 100%;
+  background-color: currentColor;
+  transition: transform 0.25s ease-in-out;
+  transition: transform 0.25s ease-in-out;
+
+  &:first-child {
+    top: 0;
+  }
+
+  &:nth-child(2),
+  &:nth-child(3) {
+    top: 50%;
+    -webkit-transform: rotate(0deg) translateX(4px);
+    transform: rotate(0deg) translateX(4px);
+  }
+
+  &:nth-child(4) {
+    top: 100%;
+  }
+
+  ${(props) =>
+    props.collapsedMenu &&
+    css`
+      &:first-child {
+        width: 0;
+        top: 50%;
+        left: 50%;
+      }
+
+      &:nth-child(4) {
+        width: 0;
+        top: 50%;
+        left: 50%;
+      }
+
+      &:nth-child(2) {
+        transform: rotate(45deg) translateX(0);
+      }
+
+      &:nth-child(3) {
+        transform: rotate(-45deg) translateX(0);
+      }
+    `}
+`;
+
 const NavbarLogo = styled.h2`
   color: ${(props) =>
-    props.darkMode ? `${colors.textDark}` : `${colors.textLight}`} !important;
+    props.darkmode ? `${colors.textDark}` : `${colors.textLight}`} !important;
   font-weight: 600;
   position: relative;
   z-index: 101;
-  padding: 1rem;
   line-height: 1;
   text-decoration: none;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const NavbarContent = styled.div`
@@ -79,7 +180,7 @@ const NavbarContent = styled.div`
     z-index: 100;
     color: #fff;
     background-color: ${(props) =>
-      props.darkMode
+      props.darkmode
         ? `${colors.backgroundDark}`
         : `${colors.backgroundLight}`} !important;
   }
@@ -97,6 +198,8 @@ const NavbarItems = styled.ul`
 
 const NavbarItem = styled.li`
   display: flex;
+  font-weight: 600;
+  margin-left: ${(props) => (props.title ? '0' : '2rem')};
   align-items: center;
   justify-content: center;
   line-height: 1;
@@ -117,7 +220,7 @@ const NavbarItem = styled.li`
 const NavbarLink = styled(Link)`
   display: flex;
   color: ${(props) =>
-    props.darkMode ? `${colors.textDark}` : `${colors.textLight}`} !important;
+    props.darkmode ? `${colors.textDark}` : `${colors.textLight}`} !important;
   align-items: center;
   justify-content: center;
   padding: 1rem;
@@ -128,15 +231,14 @@ const NavbarLink = styled(Link)`
   &:hover,
   &:focus {
     color: ${(props) =>
-      props.darkMode
+      props.darkmode
         ? `${colors.textHoverDark}`
         : `${colors.textHoverLight}`} !important;
   }
 `;
 
-const NewNavbar = () => {
+const NewNavbar = ({ darkMode }) => {
   const [collapsedMenu, setCollapsedMenu] = useState(false);
-  const darkMode = useDarkMode();
 
   const toggleCollapsedMenu = () => {
     const body = document.querySelector('body');
@@ -155,56 +257,66 @@ const NewNavbar = () => {
     <React.Fragment>
       <NavbarHeader>
         <NavbarInnerHeader>
-          <NavbarItem>
-            <NavbarLink to='/projects' darkMode={darkMode.value}>
-              <NavbarLogo darkMode={darkMode.value}>Portfolio</NavbarLogo>
-            </NavbarLink>
-          </NavbarItem>
+          <NavbarLogoContainer>
+            <NavbarItem title={true}>
+              <NavbarLink to='/projects' darkmode={darkMode.value}>
+                <NavbarLogo darkmode={darkMode.value}>Portfolio</NavbarLogo>
+              </NavbarLink>
+            </NavbarItem>
+          </NavbarLogoContainer>
           <NavbarContainer>
             <NavbarButton
               onClick={toggleCollapsedMenu}
-              darkMode={darkMode.value}
+              darkmode={darkMode.value}
             >
-              <span className='sr-only'>toggle menu</span>
-              <span className='menuicon'>
-                <span className='menuicon__bar'></span>
-                <span className='menuicon__bar'></span>
-                <span className='menuicon__bar'></span>
-                <span className='menuicon__bar'></span>
-              </span>
+              <NavbarButtonSpan>toggle menu</NavbarButtonSpan>
+              <NavbarMenuIcon collapsedMenu={collapsedMenu}>
+                <NavbarMenuIconBar
+                  collapsedMenu={collapsedMenu}
+                ></NavbarMenuIconBar>
+                <NavbarMenuIconBar
+                  collapsedMenu={collapsedMenu}
+                ></NavbarMenuIconBar>
+                <NavbarMenuIconBar
+                  collapsedMenu={collapsedMenu}
+                ></NavbarMenuIconBar>
+                <NavbarMenuIconBar
+                  collapsedMenu={collapsedMenu}
+                ></NavbarMenuIconBar>
+              </NavbarMenuIcon>
             </NavbarButton>
             <NavbarContent
               collapsedMenu={collapsedMenu}
-              darkMode={darkMode.value}
+              darkmode={darkMode.value}
             >
               <NavbarItems collapsedMenu={collapsedMenu}>
-                <NavbarItem className='nav__item'>
-                  <NavbarLink to='/projects' darkMode={darkMode.value}>
+                <NavbarItem title={false}>
+                  <NavbarLink to='/projects' darkmode={darkMode.value}>
                     Projects
                   </NavbarLink>
                 </NavbarItem>
-                <NavbarItem className='nav__item'>
-                  <NavbarLink to='/blog' darkMode={darkMode.value}>
+                <NavbarItem title={false}>
+                  <NavbarLink to='/blog' darkmode={darkMode.value}>
                     Blog
                   </NavbarLink>
                 </NavbarItem>
-                <NavbarItem className='nav__item'>
-                  <NavbarLink to='/skills' darkMode={darkMode.value}>
+                <NavbarItem title={false}>
+                  <NavbarLink to='/skills' darkmode={darkMode.value}>
                     Skills
                   </NavbarLink>
                 </NavbarItem>
-                <NavbarItem className='nav__item'>
-                  <NavbarLink to='/about' darkMode={darkMode.value}>
+                <NavbarItem title={false}>
+                  <NavbarLink to='/about' darkmode={darkMode.value}>
                     About
                   </NavbarLink>
                 </NavbarItem>
-                <NavbarItem className='nav__item'>
-                  <NavbarLink to='/contact' darkMode={darkMode.value}>
+                <NavbarItem title={false}>
+                  <NavbarLink to='/contact' darkmode={darkMode.value}>
                     Contact
                   </NavbarLink>
                 </NavbarItem>
               </NavbarItems>
-              <DarkModeSwitch />
+              <DarkModeSwitch darkMode={darkMode} />
             </NavbarContent>
           </NavbarContainer>
         </NavbarInnerHeader>

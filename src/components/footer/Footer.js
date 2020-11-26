@@ -2,19 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import GitHubIcon from '@material-ui/icons/GitHub';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { Theme } from '../../styles';
 
-import './Footer.scss';
+const { colors } = Theme;
 
 const FooterWrapper = styled.footer`
-  background-color: #143044;
-  flex: none;
-  color: #e6f1f8;
-  flex-shrink: 0;
-  position: relative;
-  left: 0;
-  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  margin-top: 4rem;
   width: 100%;
+  background-color: ${(props) =>
+    props.darkmode
+      ? `${colors.footerBackgroundDark}`
+      : `${colors.footerBackgroundLight}`};
 `;
 
 const FooterContainer = styled.div`
@@ -149,10 +150,10 @@ const FooterSocialLink = styled.a`
 
 const FooterCopyright = styled.p``;
 
-const Footer = () => {
+const Footer = ({ darkMode }) => {
   return (
     <React.Fragment>
-      <FooterWrapper>
+      <FooterWrapper darkmode={darkMode.value}>
         <FooterContainer>
           <FooterTop>
             <FooterBrand to='/home'>

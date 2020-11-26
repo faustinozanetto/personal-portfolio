@@ -59,7 +59,7 @@ const RecentWorkSubtitle = styled.h3`
   align-self: center;
 `;
 
-const Home = () => {
+const Home = ({ darkMode }) => {
   return (
     <React.Fragment>
       <Helmet>
@@ -70,12 +70,13 @@ const Home = () => {
           return (
             <ParagraphSection
               key={index}
+              darkMode={darkMode}
               style={{ animationDelay: `${0.5 + index * 0.1}s` }}
               text={aboutInfo.text}
             ></ParagraphSection>
           );
         })}
-        <ContactForm />
+        {/* <ContactForm /> */}
       </HomeContainer>
     </React.Fragment>
   );

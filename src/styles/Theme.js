@@ -6,6 +6,8 @@ const Theme = {
     textDark: '#fff',
     textHoverLight: 'red',
     textHoverDark: 'blue',
+    footerBackgroundLight: '#333030',
+    footerBackgroundDark: '#ededed',
   },
 
   fonts: {

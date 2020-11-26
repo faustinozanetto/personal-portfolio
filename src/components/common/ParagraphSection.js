@@ -1,5 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { Theme } from '../../styles';
+const { colors } = Theme;
 
 const AnimatedContainer = styled.div`
   animation-delay: 0.5s;
@@ -31,8 +33,6 @@ const AnimatedContainer = styled.div`
   }
 `;
 
-const SectionContainer = styled.section``;
-
 const Container = styled.div`
   padding: 2rem;
 
@@ -52,17 +52,14 @@ const Title = styled.h1`
   }
 `;
 
-const TextContent = styled.div`
-  color: #000;
-`;
-
 const Text = styled.p`
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 1.75rem;
   text-align: justify;
   text-justify: inter-word;
-  color: white;
+  color: ${(props) =>
+    props.darkmode ? `${colors.textDark}` : `${colors.textLight}`};
   transition: font-size 0.2s ease-in-out;
 
   @media screen and (max-width: 768px) {
@@ -70,17 +67,13 @@ const Text = styled.p`
   }
 `;
 
-const ParagraphSection = ({ title, text }) => {
+const ParagraphSection = ({ title, text, darkMode }) => {
   return (
     <AnimatedContainer>
-      <SectionContainer>
-        <Container>
-          <Title>{title}</Title>
-          <TextContent>
-            <Text>{text}</Text>
-          </TextContent>
-        </Container>
-      </SectionContainer>
+      <Container>
+        <Title>{title}</Title>
+        <Text darkmode={darkMode}>{text}</Text>
+      </Container>
     </AnimatedContainer>
   );
 };

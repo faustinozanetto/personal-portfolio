@@ -119,52 +119,51 @@ button:focus {
   }
 }
 
-.menuicon {
-  display: block;
-  width: 20px;
-  height: 20px;
-  position: relative;
-  top: -2px;
-  -webkit-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-    -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-  margin: 0 auto;
-}
-.menuicon__bar {
-  display: block;
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 4px;
-  width: 100%;
-  background-color: currentColor;
-  -webkit-transition: -webkit-transform 0.25s ease-in-out;
-  transition: -webkit-transform 0.25s ease-in-out;
-  transition: transform 0.25s ease-in-out;
-  transition: transform 0.25s ease-in-out, -webkit-transform 0.25s ease-in-out;
-}
-.menuicon__bar:first-child {
-  top: 0;
-}
-.menuicon__bar:nth-child(2),
-.menuicon__bar:nth-child(3) {
-  top: 50%;
-  -webkit-transform: rotate(0deg) translateX(4px);
-  transform: rotate(0deg) translateX(4px);
-}
-.menuicon__bar:nth-child(4) {
-  top: 100%;
-}
-.nav-open .menuicon {
-  top: 3px;
-  -webkit-transform: rotate(-180deg);
-  transform: rotate(-180deg);
-}
+// .menuicon {
+//   display: block;
+//   width: 20px;
+//   height: 20px;
+//   position: relative;
+//   top: -2px;
+//   -webkit-transform: rotate(0deg);
+//   transform: rotate(0deg);
+//   -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+//   transition: -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+//   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+//   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+//     -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+//   cursor: pointer;
+//   margin: 0 auto;
+// }
+// .menuicon__bar {
+//   display: block;
+//   position: absolute;
+//   left: 0;
+//   right: 0;
+//   height: 4px;
+//   width: 100%;
+//   background-color: currentColor;
+//   -webkit-transition: -webkit-transform 0.25s ease-in-out;
+//   transition: -webkit-transform 0.25s ease-in-out;
+//   transition: transform 0.25s ease-in-out;
+//   transition: transform 0.25s ease-in-out, -webkit-transform 0.25s ease-in-out;
+// }
+// .menuicon__bar:first-child {
+//   top: 0;
+// }
+// .menuicon__bar:nth-child(2),
+// .menuicon__bar:nth-child(3) {
+//   top: 50%;
+//   -webkit-transform: rotate(0deg) translateX(4px);
+//   transform: rotate(0deg) translateX(4px);
+// }
+// .menuicon__bar:nth-child(4) {
+//   top: 100%;
+// .nav-open .menuicon {
+//   top: 3px;
+//   -webkit-transform: rotate(-180deg);
+//   transform: rotate(-180deg);
+// }
 .nav-open .menuicon .menuicon__bar:first-child,
 .nav-open .menuicon .menuicon__bar:nth-child(4) {
   width: 0;
