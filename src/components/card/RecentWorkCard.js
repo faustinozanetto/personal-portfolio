@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import projectImage from '../../assets/images/project1.png';
 
 const CardContainer = styled.div`
   display: flex;

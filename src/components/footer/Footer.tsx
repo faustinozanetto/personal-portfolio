@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import GitHubIcon from '@material-ui/icons/GitHub';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Theme } from '../../styles';
 
 const { colors } = Theme;
@@ -89,12 +89,12 @@ const FooterNavLink = styled(Link)`
   text-decoration: none;
   font-weight: 600;
   font-size: 18px;
-  transition: all 0.2s ease-in-out;
+  transition: all 200ms ease-in-out;
   color: #fff;
 
   &:hover,
   &:focus {
-    color: inherit;
+    color: ${colors.textHoverDark};
   }
 `;
 
@@ -114,7 +114,8 @@ const FooterSocialLink = styled.a`
   & > * {
     &:hover,
     &:focus {
-      color: #66fcf1;
+      transition: all 200ms ease-in-out;
+      color: ${colors.textHoverDark};
     }
   }
 `;

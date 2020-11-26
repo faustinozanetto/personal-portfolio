@@ -1,10 +1,10 @@
-import React, { useState, lazy } from 'react';
+import React, { useRef, useState, lazy } from 'react';
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { Theme } from '../../styles';
 
 const { colors } = Theme;
-const DarkModeSwitch = lazy(() => import('./DarkModeSwitch.js'));
+const DarkModeSwitch = lazy(() => import('./DarkModeSwitch'));
 
 const NavbarHeader = styled.header`
   position: relative;
@@ -30,7 +30,7 @@ const NavbarLogoContainer = styled.div`
   touch-action: manipulation;
   padding-left: 2rem;
 
-  @media screen and (max-width: 768px) {
+  @media only screen and (max-width: 768px) {
     padding-left: 1rem;
   }
 `;
@@ -39,21 +39,25 @@ const NavbarContainer = styled.nav`
   display: block;
   padding-right: 2rem;
 
-  @media screen and (max-width: 768px) {
+  @media only screen and (max-width: 768px) {
     padding-left: 1rem;
   }
 `;
 
-const NavbarButton = styled.button`
+type NavbarButtonProps = {
+  readonly darkMode: boolean;
+};
+
+const NavbarButton = styled.button<NavbarButtonProps>`
   border: 0;
   padding: 0;
   background-color: transparent;
   display: none;
   outline: none;
   color: ${(props) =>
-    props.darkmode ? `${colors.textDark}` : `${colors.textLight}`};
+    props.darkMode ? `${colors.textDark}` : `${colors.textLight}`};
 
-  @media (max-width: 991px) {
+  @media only screen and (max-width: 991px) {
     display: block;
     /* padding: 8px 10px; */
     position: relative;
@@ -73,7 +77,11 @@ const NavbarButtonSpan = styled.span`
   border: 0;
 `;
 
-const NavbarMenuIcon = styled.span`
+type NavbarMenuIconProps = {
+  readonly collapsedMenu: boolean;
+};
+
+const NavbarMenuIcon = styled.span<NavbarMenuIconProps>`
   display: block;
   outline: none;
   width: 20px;
@@ -95,7 +103,11 @@ const NavbarMenuIcon = styled.span`
     `}
 `;
 
-const NavbarMenuIconBar = styled.span`
+type NavbarMenuIconBarProps = {
+  readonly collapsedMenu: boolean;
+};
+
+const NavbarMenuIconBar = styled.span<NavbarMenuIconBarProps>`
   display: block;
   position: absolute;
   outline: none;
@@ -147,25 +159,34 @@ const NavbarMenuIconBar = styled.span`
     `}
 `;
 
-const NavbarLogo = styled.h2`
+type NavbarLogoProps = {
+  readonly darkMode: boolean;
+};
+
+const NavbarLogo = styled.h2<NavbarLogoProps>`
   color: ${(props) =>
-    props.darkmode ? `${colors.textDark}` : `${colors.textLight}`} !important;
+    props.darkMode ? `${colors.textDark}` : `${colors.textLight}`} !important;
   font-weight: 600;
   position: relative;
   z-index: 101;
   line-height: 1;
   text-decoration: none;
 
-  @media screen and (max-width: 768px) {
+  @media only screen and (max-width: 768px) {
     font-size: 1.5rem;
   }
 `;
 
-const NavbarContent = styled.div`
+type NavbarContentProps = {
+  readonly darkMode: boolean;
+  readonly collapsedMenu: boolean;
+};
+
+const NavbarContent = styled.div<NavbarContentProps>`
   display: flex;
   align-items: center;
 
-  @media (max-width: 991px) {
+  @media only screen and (max-width: 991px) {
     overflow-y: scroll;
     display: ${(props) => (props.collapsedMenu ? 'flex' : ' none')};
     position: fixed;
@@ -180,15 +201,20 @@ const NavbarContent = styled.div`
     z-index: 100;
     color: #fff;
     background-color: ${(props) =>
-      props.darkmode
+      props.darkMode
         ? `${colors.backgroundDark}`
         : `${colors.backgroundLight}`} !important;
   }
 `;
 
-const NavbarItems = styled.ul`
+type NavbarItemsProps = {
+  readonly collapsedMenu: boolean;
+};
+
+const NavbarItems = styled.ul<NavbarItemsProps>`
   display: flex;
-  @media (max-width: 991px) {
+
+  @media only screen and (max-width: 991px) {
     display: ${(props) => (props.collapsedMenu ? 'flex' : 'none')};
     flex: 1 1;
     flex-direction: column;
@@ -196,10 +222,14 @@ const NavbarItems = styled.ul`
   }
 `;
 
-const NavbarItem = styled.li`
+type NavbarItemProps = {
+  readonly isTitle: boolean;
+};
+
+const NavbarItem = styled.li<NavbarItemProps>`
   display: flex;
   font-weight: 600;
-  margin-left: ${(props) => (props.title ? '0' : '2rem')};
+  margin-left: ${(props) => (props.isTitle ? '0' : '2rem')};
   align-items: center;
   justify-content: center;
   line-height: 1;
@@ -207,7 +237,7 @@ const NavbarItem = styled.li`
   transition: all 0.2s ease-in-out;
   font-size: 18px;
 
-  @media (max-width: 991px) {
+  @media only screen and (max-width: 991px) {
     margin: 0;
     align-items: center;
     font-size: 1.25rem;
@@ -217,10 +247,14 @@ const NavbarItem = styled.li`
   }
 `;
 
-const NavbarLink = styled(Link)`
+type NavbarLinkProps = {
+  readonly darkMode: boolean;
+};
+
+const NavbarLink = styled(Link)<NavbarLinkProps>`
   display: flex;
   color: ${(props) =>
-    props.darkmode ? `${colors.textDark}` : `${colors.textLight}`} !important;
+    props.darkMode ? `${colors.textDark}` : `${colors.textLight}`} !important;
   align-items: center;
   justify-content: center;
   padding: 1rem;
@@ -231,17 +265,25 @@ const NavbarLink = styled(Link)`
   &:hover,
   &:focus {
     color: ${(props) =>
-      props.darkmode
+      props.darkMode
         ? `${colors.textHoverDark}`
         : `${colors.textHoverLight}`} !important;
   }
 `;
 
-const NewNavbar = ({ darkMode }) => {
+type NavbarProps = {
+  darkMode: boolean;
+  darkModeFunc: any;
+};
+
+const Navbar = ({ darkMode, darkModeFunc }: NavbarProps) => {
   const [collapsedMenu, setCollapsedMenu] = useState(false);
 
   const toggleCollapsedMenu = () => {
-    const body = document.querySelector('body');
+    const body = document.querySelector<HTMLElement>('body');
+    if (!body) {
+      throw new ReferenceError('Craft weight section not found.');
+    }
     if (body.classList.contains('nav-open')) {
       body.classList.remove('nav-open');
       body.classList.remove('no-scroll');
@@ -258,17 +300,14 @@ const NewNavbar = ({ darkMode }) => {
       <NavbarHeader>
         <NavbarInnerHeader>
           <NavbarLogoContainer>
-            <NavbarItem title={true}>
-              <NavbarLink to='/projects' darkmode={darkMode.value}>
-                <NavbarLogo darkmode={darkMode.value}>Portfolio</NavbarLogo>
+            <NavbarItem isTitle={true}>
+              <NavbarLink to='/projects' darkMode={darkMode}>
+                <NavbarLogo darkMode={darkMode}>Portfolio</NavbarLogo>
               </NavbarLink>
             </NavbarItem>
           </NavbarLogoContainer>
           <NavbarContainer>
-            <NavbarButton
-              onClick={toggleCollapsedMenu}
-              darkmode={darkMode.value}
-            >
+            <NavbarButton onClick={toggleCollapsedMenu} darkMode={darkMode}>
               <NavbarButtonSpan>toggle menu</NavbarButtonSpan>
               <NavbarMenuIcon collapsedMenu={collapsedMenu}>
                 <NavbarMenuIconBar
@@ -285,38 +324,35 @@ const NewNavbar = ({ darkMode }) => {
                 ></NavbarMenuIconBar>
               </NavbarMenuIcon>
             </NavbarButton>
-            <NavbarContent
-              collapsedMenu={collapsedMenu}
-              darkmode={darkMode.value}
-            >
+            <NavbarContent collapsedMenu={collapsedMenu} darkMode={darkMode}>
               <NavbarItems collapsedMenu={collapsedMenu}>
-                <NavbarItem title={false}>
-                  <NavbarLink to='/projects' darkmode={darkMode.value}>
+                <NavbarItem isTitle={false}>
+                  <NavbarLink to='/projects' darkMode={darkMode}>
                     Projects
                   </NavbarLink>
                 </NavbarItem>
-                <NavbarItem title={false}>
-                  <NavbarLink to='/blog' darkmode={darkMode.value}>
+                <NavbarItem isTitle={false}>
+                  <NavbarLink to='/blog' darkMode={darkMode}>
                     Blog
                   </NavbarLink>
                 </NavbarItem>
-                <NavbarItem title={false}>
-                  <NavbarLink to='/skills' darkmode={darkMode.value}>
+                <NavbarItem isTitle={false}>
+                  <NavbarLink to='/skills' darkMode={darkMode}>
                     Skills
                   </NavbarLink>
                 </NavbarItem>
-                <NavbarItem title={false}>
-                  <NavbarLink to='/about' darkmode={darkMode.value}>
+                <NavbarItem isTitle={false}>
+                  <NavbarLink to='/about' darkMode={darkMode}>
                     About
                   </NavbarLink>
                 </NavbarItem>
-                <NavbarItem title={false}>
-                  <NavbarLink to='/contact' darkmode={darkMode.value}>
+                <NavbarItem isTitle={false}>
+                  <NavbarLink to='/contact' darkMode={darkMode}>
                     Contact
                   </NavbarLink>
                 </NavbarItem>
               </NavbarItems>
-              <DarkModeSwitch darkMode={darkMode} />
+              <DarkModeSwitch darkMode={darkMode} darkModeFunc={darkModeFunc} />
             </NavbarContent>
           </NavbarContainer>
         </NavbarInnerHeader>
@@ -325,4 +361,4 @@ const NewNavbar = ({ darkMode }) => {
   );
 };
 
-export default NewNavbar;
+export default Navbar;

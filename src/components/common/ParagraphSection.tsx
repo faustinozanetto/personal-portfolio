@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Theme } from '../../styles';
 const { colors } = Theme;
 
@@ -36,43 +36,49 @@ const AnimatedContainer = styled.div`
 const Container = styled.div`
   padding: 2rem;
 
-  @media screen and (max-width: 768px) {
+  @media only screen and (max-width: 768px) {
     padding: 1rem;
   }
 `;
 
 const Title = styled.h1`
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 2.5rem;
   line-height: 1.3em;
 
-  @media screen and (max-width: 768px) {
+  @media only screen and (max-width: 768px) {
     font-size: 1.75rem;
   }
 `;
 
-const Text = styled.p`
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+type TextProps = {
+  readonly darkMode: boolean;
+};
+
+const Text = styled.p<TextProps>`
   font-size: 1.75rem;
   text-align: justify;
-  text-justify: inter-word;
+  text-justify: justify;
   color: ${(props) =>
-    props.darkmode ? `${colors.textDark}` : `${colors.textLight}`};
+    props.darkMode ? `${colors.textDark}` : `${colors.textLight}`} !important;
   transition: font-size 0.2s ease-in-out;
 
-  @media screen and (max-width: 768px) {
+  @media only screen and (max-width: 768px) {
     font-size: 1.25rem;
   }
 `;
 
-const ParagraphSection = ({ title, text, darkMode }) => {
+type ParagraphSectionProps = {
+  title: string;
+  text: string;
+  darkMode: boolean;
+};
+
+const ParagraphSection = ({ title, text, darkMode }: ParagraphSectionProps) => {
   return (
     <AnimatedContainer>
       <Container>
         <Title>{title}</Title>
-        <Text darkmode={darkMode}>{text}</Text>
+        <Text darkMode={darkMode}>{text}</Text>
       </Container>
     </AnimatedContainer>
   );
