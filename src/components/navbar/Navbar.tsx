@@ -1,4 +1,4 @@
-import React, { useRef, useState, lazy } from 'react';
+import React, { useState, lazy } from 'react';
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { Theme } from '../../styles';
@@ -287,19 +287,20 @@ const Navbar = ({ darkMode, darkModeFunc }: NavbarProps) => {
   const [collapsedMenu, setCollapsedMenu] = useState(false);
 
   const toggleCollapsedMenu = () => {
-    const body = document.querySelector<HTMLElement>('body');
-    if (!body) {
-      throw new ReferenceError('Craft weight section not found.');
-    }
-    if (body.classList.contains('nav-open')) {
-      body.classList.remove('nav-open');
-      body.classList.remove('no-scroll');
-      setCollapsedMenu(false);
-    } else {
-      body.classList.add('nav-open');
-      body.classList.add('no-scroll');
-      setCollapsedMenu(true);
-    }
+    setCollapsedMenu(!collapsedMenu);
+    // const body = document.querySelector<HTMLElement>('body');
+    // if (!body) {
+    //   throw new ReferenceError('Craft weight section not found.');
+    // }
+    // if (body.classList.contains('nav-open')) {
+    //   body.classList.remove('nav-open');
+    //   body.classList.remove('no-scroll');
+    //   setCollapsedMenu(false);
+    // } else {
+    //   body.classList.add('nav-open');
+    //   body.classList.add('no-scroll');
+    //   setCollapsedMenu(true);
+    // }
   };
 
   return (
@@ -307,11 +308,13 @@ const Navbar = ({ darkMode, darkModeFunc }: NavbarProps) => {
       <NavbarHeader>
         <NavbarInnerHeader>
           <NavbarLogoContainer>
-            <NavbarItem isTitle={true}>
-              <NavbarLink to='/projects' darkMode={darkMode}>
-                <NavbarLogo darkMode={darkMode}>Portfolio</NavbarLogo>
-              </NavbarLink>
-            </NavbarItem>
+            <ul>
+              <NavbarItem isTitle={true}>
+                <NavbarLink to='/projects' darkMode={darkMode}>
+                  <NavbarLogo darkMode={darkMode}>Portfolio</NavbarLogo>
+                </NavbarLink>
+              </NavbarItem>
+            </ul>
           </NavbarLogoContainer>
           <NavbarContainer>
             <NavbarButton onClick={toggleCollapsedMenu} darkMode={darkMode}>

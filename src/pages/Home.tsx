@@ -8,6 +8,10 @@ import aboutData from '../data/about.json';
 const ParagraphSection = lazy(
   () => import('../components/common/ParagraphSection')
 );
+
+const IntroduceSection = lazy(
+  () => import('../components/section/IntroduceSection')
+);
 // const ContactForm = lazy(() => import('../components/contact/ContactForm'));
 
 const HomeContainer = styled.div`
@@ -65,7 +69,7 @@ const Home = ({ darkMode }: HomeProps) => {
         <title>Home - Personal Portfolio</title>
       </Helmet>
       <HomeContainer>
-        {aboutData.map((aboutInfo, index) => {
+        {/* {aboutData.map((aboutInfo, index) => {
           return (
             <ParagraphSection
               key={index}
@@ -75,7 +79,8 @@ const Home = ({ darkMode }: HomeProps) => {
               text={aboutInfo.text}
             ></ParagraphSection>
           );
-        })}
+        })} */}
+        <IntroduceSection dark={false}></IntroduceSection>
         {/* <ContactForm /> */}
       </HomeContainer>
     </React.Fragment>

@@ -12,19 +12,18 @@ const Contact = lazy(() => import('./pages/Contact'));
 const Footer = lazy(() => import('./components/footer/Footer.tsx'));
 
 const AppContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
   min-height: 100vh;
   box-sizing: border-box;
 `;
 
 const MainContainer = styled.div`
-  padding: 0rem 5% 0rem 5%;
+  /* padding: 0rem 5% 0rem 5%;
 
   @media only screen and (max-width: 768px) {
     padding: 0rem 2% 0rem 2%;
-  }
+  } */
 `;
 
 const App = () => {

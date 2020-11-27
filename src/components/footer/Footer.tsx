@@ -13,8 +13,6 @@ const FooterWrapper = styled.footer`
   margin-top: 2rem;
   width: 100%;
   background-color: ${colors.footerBackgroundLight};
-  /* position: absolute;
-  bottom: 0; */
   overflow: hidden;
 `;
 
@@ -55,20 +53,30 @@ const FooterNav = styled.nav`
 
 const FooterNavList = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  column-gap: 1rem;
-  row-gap: 0.5rem;
+  grid-template-columns: 1fr 1fr;
+  & > * {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  /* grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); */
+  column-gap: 0.2rem;
+  row-gap: 0.1rem;
   margin: 0;
 
+  /* For 768px width and up */
   @media only screen and (min-width: 768px) {
     display: flex;
+    & > * {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
   }
 `;
 
-const FooterNavItem = styled.h4`
+const FooterNavItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
