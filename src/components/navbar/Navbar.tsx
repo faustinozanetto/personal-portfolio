@@ -6,10 +6,37 @@ import { Theme } from '../../styles';
 const { colors } = Theme;
 const DarkModeSwitch = lazy(() => import('./DarkModeSwitch'));
 
-const NavbarHeader = styled.header`
-  position: relative;
+type NavbarHeaderProps = {
+  readonly darkMode: boolean;
+  readonly sticky: boolean;
+};
+
+const NavbarHeader = styled.header<NavbarHeaderProps>`
+  position: absolute;
+  width: 100%;
   flex: none;
+  z-index: 1;
   padding-top: 2rem;
+  background-color: ${(props) =>
+    props.darkMode ? `${colors.backgroundDark}` : `${colors.backgroundLight}`};
+  /* 
+  ${(props) =>
+    props.sticky &&
+    css`
+      position: fixed;
+      top: 0;
+      left: 0;
+      animation: moveDown 0.5s ease-in-out;
+    `}
+
+  @keyframes moveDown {
+    from {
+      transform: translateY(-5rem);
+    }
+    to {
+      transform: translateY(0rem);
+    }
+  } */
 `;
 
 const NavbarInnerHeader = styled.div`
@@ -281,31 +308,31 @@ const NavbarLink = styled(Link)<NavbarLinkProps>`
 type NavbarProps = {
   darkMode: boolean;
   darkModeFunc: any;
+  sticky: boolean;
 };
 
-const Navbar = ({ darkMode, darkModeFunc }: NavbarProps) => {
+const Navbar = ({ darkMode, darkModeFunc, sticky }: NavbarProps) => {
   const [collapsedMenu, setCollapsedMenu] = useState(false);
 
   const toggleCollapsedMenu = () => {
-    setCollapsedMenu(!collapsedMenu);
-    // const body = document.querySelector<HTMLElement>('body');
-    // if (!body) {
-    //   throw new ReferenceError('Craft weight section not found.');
-    // }
-    // if (body.classList.contains('nav-open')) {
-    //   body.classList.remove('nav-open');
-    //   body.classList.remove('no-scroll');
-    //   setCollapsedMenu(false);
-    // } else {
-    //   body.classList.add('nav-open');
-    //   body.classList.add('no-scroll');
-    //   setCollapsedMenu(true);
-    // }
+    const body = document.querySelector<HTMLElement>('body');
+    if (!body) {
+      throw new ReferenceError('Craft weight section not found.');
+    }
+    if (body.classList.contains('nav-open')) {
+      body.classList.remove('nav-open');
+      body.classList.remove('no-scroll');
+      setCollapsedMenu(false);
+    } else {
+      body.classList.add('nav-open');
+      body.classList.add('no-scroll');
+      setCollapsedMenu(true);
+    }
   };
 
   return (
     <React.Fragment>
-      <NavbarHeader>
+      <NavbarHeader darkMode={darkMode} sticky={sticky}>
         <NavbarInnerHeader>
           <NavbarLogoContainer>
             <ul>

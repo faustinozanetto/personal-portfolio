@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import { Route, Redirect, Switch, useLocation } from 'react-router-dom';
 import useDarkMode from 'use-dark-mode';
+import useSticky from './hooks/StickyNavbar';
 import styled from 'styled-components';
 
 const GlobalStyle = lazy(() => import('./styles/GlobalStyle'));
@@ -24,11 +25,13 @@ const MainContainer = styled.div`
   @media only screen and (max-width: 768px) {
     padding: 0rem 2% 0rem 2%;
   } */
+  padding-top: 120px;
 `;
 
 const App = () => {
   const darkMode = useDarkMode(false);
   const location = useLocation();
+  const { isSticky, element } = useSticky();
 
   const pages = [
     {
@@ -54,17 +57,25 @@ const App = () => {
     <React.Fragment>
       <AppContainer>
         <GlobalStyle />
-        <Navbar darkMode={darkMode.value} darkModeFunc={darkMode} />
+        <Navbar
+          darkMode={darkMode.value}
+          darkModeFunc={darkMode}
+          sticky={isSticky}
+        />
         <MainContainer>
           <Suspense fallback={<div />}>
             <Switch location={location}>
-              {pages.map((page, index) => {
+              {pages.map((Page, index) => {
                 return (
                   <Route
                     exact
-                    path={page.pageLink}
+                    path={Page.pageLink}
                     render={(props) => (
-                      <page.view {...props} darkMode={darkMode.value} />
+                      <Page.view
+                        {...props}
+                        darkMode={darkMode.value}
+                        element={element}
+                      />
                     )}
                     key={index}
                   />

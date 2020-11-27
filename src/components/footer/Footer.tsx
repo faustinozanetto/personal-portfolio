@@ -10,7 +10,6 @@ const { colors } = Theme;
 const FooterWrapper = styled.footer`
   display: flex;
   flex-direction: column;
-  margin-top: 2rem;
   width: 100%;
   background-color: ${colors.footerBackgroundLight};
   overflow: hidden;
@@ -143,13 +142,14 @@ const FooterCopyright = styled.p`
 
 type FooterProps = {
   darkMode: boolean;
+  element: any;
 };
 
-const Footer = ({ darkMode }: FooterProps) => {
+const Footer = ({ darkMode, element }: FooterProps) => {
   return (
     <React.Fragment>
       <FooterWrapper>
-        <FooterContainer>
+        <FooterContainer ref={element}>
           <FooterTop>
             <FooterNav>
               <FooterNavList>
