@@ -1,8 +1,6 @@
 import React, { lazy } from 'react';
 import styled from 'styled-components';
 
-const ProgressBar = lazy(() => import('../common/ProgressBar'));
-
 type WrapperProps = {
   readonly dark: boolean;
 };
@@ -133,17 +131,17 @@ const RightContent = styled.div`
   padding-top: 25px;
 `;
 
-type AboutSectionProps = {
+type ServicesSectionProps = {
   dark: boolean;
 };
-const AboutSection = ({ dark }: AboutSectionProps) => {
+const ServicesSection = ({ dark }: ServicesSectionProps) => {
   return (
     <Wrapper dark={dark}>
       <Container>
         <HeaderWrapper>
           <HeaderContainer>
             <HeaderContent>
-              <HeaderTitle>About</HeaderTitle>
+              <HeaderTitle>Services</HeaderTitle>
             </HeaderContent>
           </HeaderContainer>
         </HeaderWrapper>
@@ -160,12 +158,7 @@ const AboutSection = ({ dark }: AboutSectionProps) => {
             </LeftContent>
           </LeftContainer>
           <RightContainer>
-            <RightContent>
-              <ProgressBar title={'HTML'} />
-              <ProgressBar title={'HTML'} />
-              <ProgressBar title={'HTML'} />
-              <ProgressBar title={'HTML'} />
-            </RightContent>
+            <RightContent></RightContent>
           </RightContainer>
         </Content>
       </Container>
@@ -173,4 +166,4 @@ const AboutSection = ({ dark }: AboutSectionProps) => {
   );
 };
 
-export default AboutSection;
+export default ServicesSection;

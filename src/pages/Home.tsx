@@ -14,6 +14,10 @@ const IntroductionSection = lazy(
 );
 
 const AboutSection = lazy(() => import('../components/section/AboutSection'));
+
+const ServicesSection = lazy(
+  () => import('../components/section/ServicesSection')
+);
 // const ContactForm = lazy(() => import('../components/contact/ContactForm'));
 
 const HomeContainer = styled.div`
@@ -82,8 +86,10 @@ const Home = ({ darkMode }: HomeProps) => {
             ></ParagraphSection>
           );
         })} */}
-        <IntroductionSection dark={false}></IntroductionSection>
+        {/* <IntroductionSection dark={false}></IntroductionSection>
+        <AboutSection dark={true}></AboutSection> */}
         <AboutSection dark={true}></AboutSection>
+        <ServicesSection dark={false}></ServicesSection>
         {/* <ContactForm /> */}
       </HomeContainer>
     </React.Fragment>
