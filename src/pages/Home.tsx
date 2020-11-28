@@ -13,6 +13,8 @@ const IntroductionSection = lazy(
   () => import('../components/section/IntroductionSection')
 );
 
+const StartSection = lazy(() => import('../components/section/StartSection'));
+
 const AboutSection = lazy(() => import('../components/section/AboutSection'));
 
 const ServicesSection = lazy(
@@ -88,6 +90,7 @@ const Home = ({ darkMode }: HomeProps) => {
         })} */}
         {/* <IntroductionSection dark={false}></IntroductionSection>
         <AboutSection dark={true}></AboutSection> */}
+        <StartSection dark={false}></StartSection>
         <AboutSection dark={true}></AboutSection>
         <ServicesSection dark={false}></ServicesSection>
         {/* <ContactForm /> */}

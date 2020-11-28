@@ -1,6 +1,8 @@
 import React, { lazy } from 'react';
 import styled from 'styled-components';
 
+const ServiceCard = lazy(() => import('../common/ServiceCard'));
+
 type WrapperProps = {
   readonly dark: boolean;
 };
@@ -9,6 +11,16 @@ const Wrapper = styled.section<WrapperProps>`
   padding-top: 125px;
   display: block;
   background-color: ${(props) => (props.dark ? '#fbfbfb' : ' #f8f9fa')};
+
+  @media only screen and (max-width: 991px) and (min-width: 768px) {
+    padding-top: 90px;
+    padding-bottom: 100px;
+  }
+
+  @media (max-width: 767px) {
+    padding-top: 70px;
+    padding-bottom: 80px;
+  }
 `;
 
 const Container = styled.div`
@@ -18,6 +30,10 @@ const Container = styled.div`
   margin-right: auto;
   margin-left: auto;
   /* max-width: 1140px; */
+
+  @media (min-width: 768px) {
+    max-width: 720px;
+  }
 
   @media only screen and (min-width: 1200px) {
     max-width: 1140px;
@@ -76,60 +92,48 @@ const Content = styled.div`
   margin-left: -15px;
 `;
 
-const LeftContainer = styled.div`
-  position: relative;
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-
-  @media (min-width: 992px) {
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
+const BottomContainer = styled.div`
+  justify-content: center !important;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
 `;
 
-const LeftContent = styled.div`
-  margin-top: 50px;
-
-  & > h5 {
-    font-size: 18px;
-    font-weight: 500;
-    padding-bottom: 15px;
-    color: #32333c;
-    margin: 0;
-    line-height: 1.2;
-  }
-
-  & > p {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 28px;
-    color: #8a8fa3;
-    margin: 0;
-  }
-`;
-
-const RightContainer = styled.div`
-  position: relative;
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-
-  @media (min-width: 1200px) {
-    margin-left: 8.333333%;
-    flex: 0 0 41.666667%;
-    max-width: 41.666667%;
-  }
-
-  @media (min-width: 1200px) {
-    flex: 0 0 41.666667%;
-    max-width: 41.666667%;
-  }
-`;
-
-const RightContent = styled.div`
-  padding-top: 25px;
-`;
+const servicesData = [
+  {
+    title: 'Web Design',
+    text:
+      'Curabitur vitae magna felis. Nulla ac libero ornare, vestibulum lacus quis blandit enimdicta sunt.',
+  },
+  {
+    title: 'Web Design',
+    text:
+      'Curabitur vitae magna felis. Nulla ac libero ornare, vestibulum lacus quis blandit enimdicta sunt.',
+  },
+  {
+    title: 'Web Design',
+    text:
+      'Curabitur vitae magna felis. Nulla ac libero ornare, vestibulum lacus quis blandit enimdicta sunt.',
+  },
+  {
+    title: 'Web Design',
+    text:
+      'Curabitur vitae magna felis. Nulla ac libero ornare, vestibulum lacus quis blandit enimdicta sunt.',
+  },
+  {
+    title: 'Web Design',
+    text:
+      'Curabitur vitae magna felis. Nulla ac libero ornare, vestibulum lacus quis blandit enimdicta sunt.',
+  },
+  {
+    title: 'Web Design',
+    text:
+      'Curabitur vitae magna felis. Nulla ac libero ornare, vestibulum lacus quis blandit enimdicta sunt.',
+  },
+];
 
 type ServicesSectionProps = {
   dark: boolean;
@@ -146,20 +150,17 @@ const ServicesSection = ({ dark }: ServicesSectionProps) => {
           </HeaderContainer>
         </HeaderWrapper>
         <Content>
-          <LeftContainer>
-            <LeftContent>
-              <h5>Hi There! I´m Faustino Zanetto</h5>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
-              </p>
-            </LeftContent>
-          </LeftContainer>
-          <RightContainer>
-            <RightContent></RightContent>
-          </RightContainer>
+          <BottomContainer>
+            {servicesData.map((service, index) => {
+              return (
+                <ServiceCard
+                  key={index}
+                  title={service.title}
+                  text={service.text}
+                />
+              );
+            })}
+          </BottomContainer>
         </Content>
       </Container>
     </Wrapper>

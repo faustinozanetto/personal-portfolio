@@ -19,22 +19,21 @@ const Container = styled.div`
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
-  /* max-width: 1140px; */
 
-  @media only screen and (min-width: 1200px) {
-    max-width: 1140px;
+  @media (min-width: 576px) {
+    max-width: 540px;
   }
 
-  @media only screen and (min-width: 992px) {
-    max-width: 960px;
-  }
-
-  @media only screen and(min-width: 768px) {
+  @media (min-width: 768px) {
     max-width: 720px;
   }
 
-  @media only screen and(min-width: 576px) {
-    max-width: 540px;
+  @media (min-width: 992px) {
+    max-width: 960px;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 1140px;
   }
 `;
 
@@ -143,7 +142,7 @@ const AboutSection = ({ dark }: AboutSectionProps) => {
         <HeaderWrapper>
           <HeaderContainer>
             <HeaderContent>
-              <HeaderTitle>About</HeaderTitle>
+              <HeaderTitle>About Me</HeaderTitle>
             </HeaderContent>
           </HeaderContainer>
         </HeaderWrapper>

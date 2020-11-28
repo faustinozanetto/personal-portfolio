@@ -14,25 +14,28 @@ const Wrapper = styled.section`
 `;
 
 const ContentContainer = styled.div<ContentContainerProps>`
-  @media (min-width: 1200px) {
-    max-width: 1140px;
-  }
-  @media (min-width: 992px) {
-    max-width: 960px;
-  }
-  @media (min-width: 768px) {
-    max-width: 720px;
-  }
-  @media (min-width: 576px) {
-    max-width: 540px;
-  }
-
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
   background-color: ${(props) => (props.dark ? '#1c1c1c' : ' #262626')};
+
+  @media (min-width: 576px) {
+    max-width: 540px;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 720px;
+  }
+
+  @media (min-width: 992px) {
+    max-width: 960px;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 1140px;
+  }
 `;
 
 const ItemsContainer = styled.div`
