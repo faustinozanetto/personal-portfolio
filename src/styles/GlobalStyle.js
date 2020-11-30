@@ -10,34 +10,55 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    margin: 0;
-    padding: 0;
     scroll-behavior: smooth;
     transition: all 500ms ease-in-out;
   }
 
   body {
-    margin: 0;
-    padding: 0;
     font-family: ${Theme.fonts.bodyFont};
     font-size: ${Theme.fonts.normalFontSize};
     font-weight: ${Theme.fontWeights.medium};
     background-color: ${Theme.colors.backgroundLight};
-    line-height: 1.6;
+    font-size: 14px;
+    line-height: 22px;
+    margin: 0;
+    padding: 0;
   }
 
   h1,
   h2,
-  h3
-  li,
-  ul {
-    margin: 0;
-
+  h3,
+  h4,
+  h5,
+  h6 {
+      line-height: 110%;
+      margin: 0;
+      font-weight: 500;
+      color: #fff;
   }
 
-  h2,
+  h1 {
+    font-size: 48px;
+  }
+
+  h2 {
+    font-size: 36px;
+  }
+
   h3 {
-    font-weight: ${Theme.fontWeights.fontSemiBold};
+    font-size: 28px;
+  }
+
+  h4 {
+    font-size: 18px;
+  }
+
+  h5 {
+    font-size: 16px;
+  }
+
+  h6 {
+    font-size: 14px;
   }
 
   ul {

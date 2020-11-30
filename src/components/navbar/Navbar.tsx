@@ -8,35 +8,15 @@ const DarkModeSwitch = lazy(() => import('./DarkModeSwitch'));
 
 type NavbarHeaderProps = {
   readonly darkMode: boolean;
-  readonly sticky: boolean;
 };
 
 const NavbarHeader = styled.header<NavbarHeaderProps>`
-  position: absolute;
   width: 100%;
   flex: none;
   z-index: 1;
   padding-top: 2rem;
   background-color: ${(props) =>
     props.darkMode ? `${colors.backgroundDark}` : `${colors.backgroundLight}`};
-  /* 
-  ${(props) =>
-    props.sticky &&
-    css`
-      position: fixed;
-      top: 0;
-      left: 0;
-      animation: moveDown 0.5s ease-in-out;
-    `}
-
-  @keyframes moveDown {
-    from {
-      transform: translateY(-5rem);
-    }
-    to {
-      transform: translateY(0rem);
-    }
-  } */
 `;
 
 const NavbarInnerHeader = styled.div`
@@ -308,10 +288,9 @@ const NavbarLink = styled(Link)<NavbarLinkProps>`
 type NavbarProps = {
   darkMode: boolean;
   darkModeFunc: any;
-  sticky: boolean;
 };
 
-const Navbar = ({ darkMode, darkModeFunc, sticky }: NavbarProps) => {
+const Navbar = ({ darkMode, darkModeFunc }: NavbarProps) => {
   const [collapsedMenu, setCollapsedMenu] = useState(false);
 
   const toggleCollapsedMenu = () => {
@@ -332,7 +311,7 @@ const Navbar = ({ darkMode, darkModeFunc, sticky }: NavbarProps) => {
 
   return (
     <React.Fragment>
-      <NavbarHeader darkMode={darkMode} sticky={sticky}>
+      <NavbarHeader darkMode={darkMode}>
         <NavbarInnerHeader>
           <NavbarLogoContainer>
             <ul>
