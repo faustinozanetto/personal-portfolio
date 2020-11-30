@@ -4,10 +4,14 @@ const Theme = {
     backgroundDark: '#121212',
     textLight: '#000',
     textDark: '#fff',
+    textBigDark: '#ff8c05',
+    textBigLight: '#0073fa',
     textHoverLight: '#45a29e',
     textHoverDark: '#66fcf1',
     footerBackgroundLight: ' #000000;',
     footerBackgroundDark: '#ededed',
+    sectionBackgroundDark: '#262626',
+    sectionBackgroundLight: '#d9d9d9',
   },
 
   fonts: {

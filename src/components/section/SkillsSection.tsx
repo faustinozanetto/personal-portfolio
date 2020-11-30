@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Theme } from '../../styles';
+
+const { colors } = Theme;
 
 const SkillElem = styled.li`
   margin-bottom: 20px;
@@ -7,11 +10,17 @@ const SkillElem = styled.li`
 
 const SkillTitle = styled.div``;
 
-const TitleSpan = styled.span`
+interface TitleSpanProps {
+  readonly dark: Boolean;
+}
+
+const TitleSpan = styled.span<TitleSpanProps>`
   font-size: 18px;
   margin-bottom: 10px;
   display: inline-block;
-  color: #fff;
+  color: ${(props) =>
+    props.dark ? `${colors.textDark}` : `${colors.textLight}`};
+  font-weight: ${(props) => (props.dark ? 400 : 600)};
 `;
 
 const Progress = styled.div`
@@ -27,6 +36,10 @@ interface ProgressBarProps {
   readonly amount: string;
 }
 
+interface ProgressBarProps {
+  readonly dark: Boolean;
+}
+
 const ProgressBar = styled.div<ProgressBarProps>`
   display: flex;
   flex-direction: column;
@@ -35,23 +48,30 @@ const ProgressBar = styled.div<ProgressBarProps>`
   text-align: center;
   white-space: nowrap;
   transition: width 0.6s ease;
-  background: linear-gradient(to right, #a98ff7 0%, #8ff7f3 100%);
+  background: linear-gradient(
+    to right,
+    ${(props) =>
+        props.dark ? `${colors.textBigDark}` : `${colors.textBigLight}`}
+      0%,
+    #a98ff7
+  );
   width: ${(props) => props.amount + '%'};
 `;
 
 type SkillProps = {
   name: string;
   amount: string;
+  dark: Boolean;
 };
 
-const Skill = ({ name, amount }: SkillProps) => {
+const Skill = ({ name, amount, dark }: SkillProps) => {
   return (
     <SkillElem>
       <SkillTitle>
-        <TitleSpan>{name}</TitleSpan>
+        <TitleSpan dark={dark}>{name}</TitleSpan>
       </SkillTitle>
       <Progress>
-        <ProgressBar amount={amount}></ProgressBar>
+        <ProgressBar dark={dark} amount={amount}></ProgressBar>
       </Progress>
     </SkillElem>
   );
@@ -86,11 +106,17 @@ const Container = styled.div`
     max-width: 1140px;
   }
 `;
+interface BoxContentProps {
+  readonly dark: Boolean;
+}
 
-const BoxContent = styled.div`
-  background: #262626;
+const BoxContent = styled.div<BoxContentProps>`
   padding: 40px;
-  border-radius: 3px;
+  background: ${(props) =>
+    props.dark
+      ? `${colors.sectionBackgroundDark}`
+      : `${colors.sectionBackgroundLight}`};
+  border-radius: 10px;
 `;
 
 const TitleSection = styled.div`
@@ -98,12 +124,17 @@ const TitleSection = styled.div`
   text-align: center;
 `;
 
-const Title = styled.h3`
+interface TitleProps {
+  readonly dark: Boolean;
+}
+
+const Title = styled.h3<TitleProps>`
   font-weight: 700;
+  color: ${(props) =>
+    props.dark ? `${colors.textBigDark}` : `${colors.textBigLight}`};
   font-size: 28px;
   line-height: 110%;
   margin: 0;
-  color: #8ff7f3;
 `;
 
 const SkillsContainer = styled.div`
@@ -115,14 +146,12 @@ const SkillsContainer = styled.div`
 `;
 
 const SkillsContent = styled.div`
-  width: 1030px;
   margin-right: 10px;
   position: relative;
   min-height: 1px;
-  -webkit-tap-highlight-color: transparent;
 `;
 
-const Row = styled.div`
+const RowContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-right: -15px;
@@ -132,19 +161,19 @@ const Row = styled.div`
 const LeftContainer = styled.div`
   position: relative;
   width: 100%;
-  padding-right: 15px;
+  padding-right: 150px;
   padding-left: 15px;
   flex: 0 0 50%;
   max-width: 50%;
 
-  @media screen and (max-width: 768px) {
-    flex: 0 0 50%;
-    max-width: 50%;
+  @media only screen and (max-width: 1024px) {
+    padding-right: 30px;
   }
 
-  @media screen and (max-width: 576px) {
+  @media screen and (max-width: 768px) {
     flex: 0 0 100%;
     max-width: 100%;
+    padding-right: 15px;
   }
 `;
 
@@ -157,11 +186,6 @@ const RightContainer = styled.div`
   max-width: 50%;
 
   @media screen and (max-width: 768px) {
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
-
-  @media screen and (max-width: 576px) {
     flex: 0 0 100%;
     max-width: 100%;
   }
@@ -169,11 +193,16 @@ const RightContainer = styled.div`
 
 const LeftContent = styled.div``;
 
-const TitleContainer = styled.div`
+interface TitleContainerProps {
+  readonly dark: Boolean;
+}
+
+const TitleContainer = styled.div<TitleContainerProps>`
   text-align: left;
 
   & > h3 {
-    color: #8ff7f3;
+    color: ${(props) =>
+      props.dark ? `${colors.textBigLight}` : `${colors.textBigDark}`};
     font-size: 22px;
     font-weight: 300;
     display: inline-block;
@@ -183,11 +212,28 @@ const TitleContainer = styled.div`
   }
 
   & > h2 {
+    color: ${(props) =>
+      props.dark ? `${colors.textDark}` : `${colors.textLight}`};
     font-size: 50px;
     font-weight: 900;
 
+    @media only screen and (max-width: 1024px) {
+      font-size: 40px;
+    }
+
+    @media only screen and (max-width: 768px) {
+      font-size: 35px;
+      text-align: center;
+    }
+
+    @media only screen and (max-width: 576px) {
+      font-size: 30px;
+      text-align: center;
+    }
+
     & > span {
-      color: #8ff7f3;
+      color: ${(props) =>
+        props.dark ? `${colors.textBigDark}` : `${colors.textBigLight}`};
     }
   }
 `;
@@ -211,7 +257,9 @@ const SkillBars = styled.div`
 const SkillsBody = styled.div`
   padding-left: 32px;
   flex: 1 1 auto;
-  padding: 1.25rem;
+  padding-top: 1.25rem;
+  padding-left: 1.25rem;
+  padding-bottom: 1.25rem;
 `;
 
 const SkillsList = styled.ul`
@@ -228,25 +276,46 @@ const skills = [
   { name: 'Python', amount: '25' },
 ];
 
-const SkillsSection = () => {
+interface InfoTextProps {
+  readonly dark: Boolean;
+}
+
+const InfoText = styled.p<InfoTextProps>`
+  margin: 0;
+  color: ${(props) =>
+    props.dark ? `${colors.textDark}` : `${colors.textLight}`};
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: ${(props) => (props.dark ? 400 : 600)};
+`;
+
+type SkillsSectionProps = {
+  dark: Boolean;
+};
+
+const SkillsSection = ({ dark }: SkillsSectionProps) => {
   return (
     <Skills>
       <Container>
-        <BoxContent>
+        <BoxContent dark={dark}>
           <TitleSection>
-            <Title>Skills</Title>
+            <Title dark={dark}>Skills</Title>
           </TitleSection>
           <SkillsContainer>
             <SkillsContent>
-              <Row>
+              <RowContainer>
                 <LeftContainer>
                   <LeftContent>
-                    <TitleContainer>
-                      <h3>Skill</h3>
+                    <TitleContainer dark={dark}>
                       <h2>
-                        Skills I <span>Work</span> with
-                        <span>and understand</span>
+                        Skills I <span>Use </span>
+                        and <span> Understand</span>
                       </h2>
+                      <InfoText dark={dark}>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing
+                        elit. Fuga, ratione aspernatur? At unde qui eum ex
+                        voluptatibus exercitationem temporibus reprehenderit!
+                      </InfoText>
                     </TitleContainer>
                   </LeftContent>
                 </LeftContainer>
@@ -261,6 +330,7 @@ const SkillsSection = () => {
                                 key={index}
                                 name={skill.name}
                                 amount={skill.amount}
+                                dark={dark}
                               />
                             );
                           })}
@@ -269,7 +339,7 @@ const SkillsSection = () => {
                     </SkillBars>
                   </RightContent>
                 </RightContainer>
-              </Row>
+              </RowContainer>
             </SkillsContent>
           </SkillsContainer>
         </BoxContent>

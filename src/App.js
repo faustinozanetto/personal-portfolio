@@ -10,6 +10,9 @@ const PortfolioSection = lazy(() =>
   import('./components/section/PortfolioSection')
 );
 const SkillsSection = lazy(() => import('./components/section/SkillsSection'));
+const ContactSection = lazy(() =>
+  import('./components/section/ContactSection')
+);
 
 const Footer = lazy(() => import('./components/footer/Footer.tsx'));
 
@@ -31,9 +34,10 @@ const App = () => {
         <Head>
           <Navbar darkMode={darkMode.value} darkModeFunc={darkMode} />
         </Head>
-        <AboutSection />
-        <PortfolioSection />
-        <SkillsSection />
+        <AboutSection dark={darkMode.value} />
+        <PortfolioSection dark={darkMode.value} />
+        <SkillsSection dark={darkMode.value} />
+        <ContactSection dark={darkMode.value} />
         <Suspense fallback={<div />}>
           <Footer darkMode={darkMode.value} />
         </Suspense>

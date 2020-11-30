@@ -12,6 +12,8 @@ const GlobalStyle = createGlobalStyle`
   html {
     scroll-behavior: smooth;
     transition: all 500ms ease-in-out;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   body {
@@ -23,6 +25,8 @@ const GlobalStyle = createGlobalStyle`
     line-height: 22px;
     margin: 0;
     padding: 0;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   h1,

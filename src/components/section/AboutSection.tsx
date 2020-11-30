@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import aboutImage from '../../assets/images/about.jpg';
+import { Theme } from '../../styles';
+
+const { colors } = Theme;
 
 const About = styled.div`
   padding: 27px 0;
@@ -31,21 +34,28 @@ const Container = styled.div`
   }
 `;
 
-const BoxContent = styled.div`
+interface BoxContentProps {
+  readonly dark: Boolean;
+}
+
+const BoxContent = styled.div<BoxContentProps>`
   padding: 0;
-  background: #262626;
-  border-radius: 3px;
+  background: ${(props) =>
+    props.dark
+      ? `${colors.sectionBackgroundDark}`
+      : `${colors.sectionBackgroundLight}`};
+  border-radius: 10px;
 `;
 
-const RowContainer = styled.div`
+interface RowContainerProps {
+  readonly dark: Boolean;
+}
+
+const RowContainer = styled.div<RowContainerProps>`
   display: flex;
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
-  color: #fafafa;
-  font-size: 14px;
-  line-height: 22px;
-  font-weight: 400;
 `;
 
 const LeftContainer = styled.div`
@@ -104,9 +114,14 @@ const TitleContainer = styled.div`
   margin-bottom: 15px;
 `;
 
-const Title = styled.h3`
+interface TitleProps {
+  readonly dark: Boolean;
+}
+
+const Title = styled.h3<TitleProps>`
   font-weight: 700;
-  color: #8ff7f3;
+  color: ${(props) =>
+    props.dark ? `${colors.textBigDark}` : `${colors.textBigLight}`};
   font-size: 28px;
   line-height: 110%;
   margin: 0;
@@ -114,37 +129,62 @@ const Title = styled.h3`
 
 const LeftInfo = styled.div``;
 
-const InfoTitle = styled.h2`
+interface InfoTitleProps {
+  readonly dark: Boolean;
+}
+
+const InfoTitle = styled.h2<InfoTitleProps>`
   font-size: 50px;
   font-weight: 900;
   margin-bottom: 15px;
   line-height: 110%;
   margin: 0;
-  color: #fff;
+  color: ${(props) =>
+    props.dark ? `${colors.textDark}` : `${colors.textLight}`};
 
   @media only screen and (max-width: 768px) {
     font-size: 40px;
   }
+
+  & > span {
+    color: ${(props) =>
+      props.dark ? `${colors.textBigDark}` : `${colors.textBigLight}`};
+  }
 `;
 
-const InfoText = styled.p`
+interface InfoTextProps {
+  readonly dark: Boolean;
+}
+
+const InfoText = styled.p<InfoTextProps>`
   margin: 0;
+  color: ${(props) =>
+    props.dark ? `${colors.textDark}` : `${colors.textLight}`};
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: ${(props) => (props.dark ? 400 : 600)};
 `;
 
-const AboutSection = () => {
+type AboutSectionProps = {
+  dark: Boolean;
+};
+
+const AboutSection = ({ dark }: AboutSectionProps) => {
   return (
     <About>
       <Container>
-        <BoxContent>
-          <RowContainer>
+        <BoxContent dark={dark}>
+          <RowContainer dark={dark}>
             <LeftContainer>
               <LeftContent>
                 <TitleContainer>
-                  <Title>About Me</Title>
+                  <Title dark={dark}>About Me</Title>
                 </TitleContainer>
                 <LeftInfo>
-                  <InfoTitle>I am a Web Developer</InfoTitle>
-                  <InfoText>
+                  <InfoTitle dark={dark}>
+                    I am a <span>Web Developer</span>
+                  </InfoTitle>
+                  <InfoText dark={dark}>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut
                     doloremque ratione perferendis possimus voluptatibus
                     distinctio autem expedita qui unde modi impedit officia

@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import ProjectCard from '../common/ProjectCard';
+import { Theme } from '../../styles';
+
+const { colors } = Theme;
 
 const Portfolio = styled.div`
   padding: 27px 0;
@@ -8,6 +11,7 @@ const Portfolio = styled.div`
 
 const Container = styled.div`
   width: 100%;
+  height: 100%;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
@@ -31,11 +35,17 @@ const Container = styled.div`
     max-width: 1140px;
   }
 `;
+interface BoxContentProps {
+  readonly dark: Boolean;
+}
 
-const BoxContent = styled.div`
-  background: #262626;
+const BoxContent = styled.div<BoxContentProps>`
   padding: 40px;
-  border-radius: 3px;
+  background: ${(props) =>
+    props.dark
+      ? `${colors.sectionBackgroundDark}`
+      : `${colors.sectionBackgroundLight}`};
+  border-radius: 10px;
 `;
 
 const TitleSection = styled.div`
@@ -43,12 +53,17 @@ const TitleSection = styled.div`
   text-align: center;
 `;
 
-const Title = styled.h3`
+interface TitleProps {
+  readonly dark: Boolean;
+}
+
+const Title = styled.h3<TitleProps>`
   font-weight: 700;
+  color: ${(props) =>
+    props.dark ? `${colors.textBigDark}` : `${colors.textBigLight}`};
   font-size: 28px;
   line-height: 110%;
   margin: 0;
-  color: #8ff7f3;
 `;
 
 const InfoSection = styled.div`
@@ -56,11 +71,17 @@ const InfoSection = styled.div`
   text-align: center;
 `;
 
-const Info = styled.h4`
-  padding: 0;
+interface InfoTextProps {
+  readonly dark: Boolean;
+}
+
+const InfoText = styled.p<InfoTextProps>`
   margin: 0;
-  color: #fff;
-  font-weight: 600;
+  color: ${(props) =>
+    props.dark ? `${colors.textDark}` : `${colors.textLight}`};
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: ${(props) => (props.dark ? 400 : 600)};
 `;
 
 const ProjectsContainer = styled.div`
@@ -69,24 +90,31 @@ const ProjectsContainer = styled.div`
   justify-content: center;
 `;
 
-const PortfolioSection = () => {
+type PortfolioSectionProps = {
+  dark: Boolean;
+};
+
+const PortfolioSection = ({ dark }: PortfolioSectionProps) => {
   return (
     <Portfolio>
       <Container>
-        <BoxContent>
+        <BoxContent dark={dark}>
           <TitleSection>
-            <Title>My Projects</Title>
+            <Title dark={dark}>My Projects</Title>
           </TitleSection>
           <InfoSection>
-            <Info>These are some of the projects I´ve worked on!</Info>
+            <InfoText dark={dark}>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Voluptatibus, architecto dignissimos? Eveniet magni harum
+              blanditiis.
+            </InfoText>
           </InfoSection>
           <ProjectsContainer>
             <ProjectCard />
             <ProjectCard />
             <ProjectCard />
             <ProjectCard />
-            <ProjectCard />
-            <ProjectCard />
+
           </ProjectsContainer>
         </BoxContent>
       </Container>

@@ -8,27 +8,33 @@ const Title = styled.h4`
   font-weight: 700;
   opacity: 0;
   line-height: 24px;
+  text-align: center;
 `;
 
 const SubTitle = styled.p`
   opacity: 0;
+  text-align: center;
 `;
 
 const CardContainer = styled.div`
-  box-shadow: 0px 2px 8px 0px gray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  object-fit: cover;
+  max-width: 100%;
+  overflow-x: hidden;
+  width: 230px;
+  height: 230px;
+  box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem,
+    rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem;
   background-color: white;
-  text-align: center;
   border-radius: 5px;
-  position: relative;
-  width: 320px;
   margin: 0.5rem;
-
-  opacity: 1;
-  transform: scale(1) translate3d(0px, 0px, 0px);
-  backface-visibility: hidden;
-  perspective: 1000px;
-  transform-style: preserve-3d;
-  transition: all 0.5s ease-in-out;
 
   &:hover ${Title} {
     opacity: 1;
@@ -39,9 +45,10 @@ const CardContainer = styled.div`
   }
 
   @media only screen and (max-width: 768px) {
-    margin-bottom: 0.35rem;
-    margin-top: 0.35rem;
-    width: 250px;
+    width: 175px;
+    height: 175px;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 `;
 
