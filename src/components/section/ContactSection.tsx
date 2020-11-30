@@ -308,7 +308,12 @@ const ContactSection = ({ dark }: ContactSectionProps) => {
             </LeftContainer>
             <RightContainer>
               <RightContent>
-                <Form action='#' method='post' autoComplete='off'>
+                <Form
+                  action='#'
+                  method='post'
+                  id='contact-form'
+                  autoComplete='off'
+                >
                   <FormRow>
                     <FormCol>
                       <FirstNameFiled>
@@ -317,6 +322,7 @@ const ContactSection = ({ dark }: ContactSectionProps) => {
                           type='text'
                           placeholder='First Name'
                           autoComplete='off'
+                          name='form-name'
                         />
                       </FirstNameFiled>
                     </FormCol>
@@ -327,6 +333,7 @@ const ContactSection = ({ dark }: ContactSectionProps) => {
                           type='text'
                           placeholder='Last Name'
                           autoComplete='off'
+                          name='form-name'
                         />
                       </LastNameField>
                     </FormCol>
@@ -339,6 +346,7 @@ const ContactSection = ({ dark }: ContactSectionProps) => {
                           type='email'
                           placeholder='Email Address'
                           autoComplete='off'
+                          name='form-email'
                         />
                       </EmailFiled>
                     </FormCol>
@@ -349,6 +357,7 @@ const ContactSection = ({ dark }: ContactSectionProps) => {
                           type='text'
                           placeholder='Subject'
                           autoComplete='off'
+                          name='form-subject'
                         />
                       </SubjectField>
                     </FormCol>
@@ -364,7 +373,12 @@ const ContactSection = ({ dark }: ContactSectionProps) => {
                       ></Message>
                     </FormCol>
                   </FormRow>
-                  <SubmitButton dark={dark} type='submit' name='submit'>
+                  <SubmitButton
+                    dark={dark}
+                    type='submit'
+                    name='submit'
+                    id='submit'
+                  >
                     Send Message
                   </SubmitButton>
                 </Form>
