@@ -317,74 +317,70 @@ const ContactSection = ({ dark }: ContactSectionProps) => {
                   <FormRow>
                     <FormCol>
                       <FirstNameFiled>
-                        <label>
-                          <Input
-                            dark={dark}
-                            type='text'
-                            placeholder='First Name'
-                            autoComplete='off'
-                            name='form-name'
-                            id='first-name'
-                          />
-                        </label>
+                        <Input
+                          dark={dark}
+                          type='text'
+                          placeholder='First Name'
+                          autoComplete='off'
+                          name='form-name'
+                          id='first-name'
+                        />
+                        <label htmlFor='first-name'></label>
                       </FirstNameFiled>
                     </FormCol>
                     <FormCol>
                       <LastNameField>
-                        <label>
-                          <Input
-                            dark={dark}
-                            type='text'
-                            placeholder='Last Name'
-                            autoComplete='off'
-                            name='form-name'
-                            id='last-name'
-                          />
-                        </label>
+                        <Input
+                          dark={dark}
+                          type='text'
+                          placeholder='Last Name'
+                          autoComplete='off'
+                          name='form-name'
+                          id='last-name'
+                        />
+                        <label htmlFor='last-name'></label>
                       </LastNameField>
                     </FormCol>
                   </FormRow>
                   <FormRow>
                     <FormCol>
                       <EmailFiled>
-                        <label>
-                          <Input
-                            dark={dark}
-                            type='email'
-                            placeholder='Email Address'
-                            autoComplete='off'
-                            name='form-email'
-                            id='email'
-                          />
-                        </label>
+                        <Input
+                          dark={dark}
+                          type='email'
+                          placeholder='Email Address'
+                          autoComplete='off'
+                          name='form-email'
+                          id='email'
+                        />
+                        <label htmlFor='email'></label>
                       </EmailFiled>
                     </FormCol>
                     <FormCol>
                       <SubjectField>
-                        <label>
-                          <Input
-                            dark={dark}
-                            type='text'
-                            placeholder='Subject'
-                            autoComplete='off'
-                            name='form-subject'
-                            id='subject'
-                          />
-                        </label>
+                        <Input
+                          dark={dark}
+                          type='text'
+                          placeholder='Subject'
+                          autoComplete='off'
+                          name='form-subject'
+                          id='subject'
+                        />
+                        <label htmlFor='subject'></label>
                       </SubjectField>
                     </FormCol>
                   </FormRow>
                   <FormRow>
                     <FormCol>
-                      <label>
-                        <Message
-                          dark={dark}
-                          cols={30}
-                          rows={5}
-                          name='form-message'
-                          placeholder='Message'
-                        ></Message>
-                      </label>
+                      <Message
+                        dark={dark}
+                        cols={30}
+                        rows={5}
+                        name='form-message'
+                        id='message'
+                        placeholder='Message'
+                      ></Message>
+                      <label htmlFor='message'></label>
                     </FormCol>
                   </FormRow>
                   <SubmitButton
