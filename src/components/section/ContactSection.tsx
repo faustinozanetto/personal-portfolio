@@ -317,48 +317,56 @@ const ContactSection = ({ dark }: ContactSectionProps) => {
                   <FormRow>
                     <FormCol>
                       <FirstNameFiled>
-                        <Input
-                          dark={dark}
-                          type='text'
-                          placeholder='First Name'
-                          autoComplete='off'
-                          name='form-name'
-                        />
+                        <label>
+                          <Input
+                            dark={dark}
+                            type='text'
+                            placeholder='First Name'
+                            autoComplete='off'
+                            name='form-name'
+                          />
+                        </label>
                       </FirstNameFiled>
                     </FormCol>
                     <FormCol>
                       <LastNameField>
-                        <Input
-                          dark={dark}
-                          type='text'
-                          placeholder='Last Name'
-                          autoComplete='off'
-                          name='form-name'
-                        />
+                        <label>
+                          <Input
+                            dark={dark}
+                            type='text'
+                            placeholder='Last Name'
+                            autoComplete='off'
+                            name='form-name'
+                          />
+                        </label>
                       </LastNameField>
                     </FormCol>
                   </FormRow>
                   <FormRow>
                     <FormCol>
                       <EmailFiled>
-                        <Input
-                          dark={dark}
-                          type='email'
-                          placeholder='Email Address'
-                          autoComplete='off'
-                          name='form-email'
-                        />
+                        <label>
+                          <Input
+                            dark={dark}
+                            type='email'
+                            placeholder='Email Address'
+                            autoComplete='off'
+                            name='form-email'
+                          />
+                        </label>
                       </EmailFiled>
                     </FormCol>
                     <FormCol>
                       <SubjectField>
-                        <Input
-                          dark={dark}
-                          type='text'
-                          placeholder='Subject'
-                          autoComplete='off'
-                          name='form-subject'
-                        />
+                        <label>
+                          <Input
+                            dark={dark}
+                            type='text'
+                            placeholder='Subject'
+                            autoComplete='off'
+                            name='form-subject'
+                          />
+                        </label>
                       </SubjectField>
                     </FormCol>
                   </FormRow>
