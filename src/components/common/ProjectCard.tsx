@@ -76,7 +76,7 @@ const ImageSection = styled.div`
   }
 `;
 
-const ImageWrapper = styled.a`
+const ImageWrapper = styled.div`
   color: #fff;
   text-decoration: none;
   background-color: transparent;
@@ -109,7 +109,7 @@ const ProjectCard = () => {
   return (
     <CardContainer>
       <ImageSection>
-        <ImageWrapper href=''>
+        <ImageWrapper>
           <Image src={projectImage} alt='' />
           <ImageOverlay></ImageOverlay>
           <Caption>

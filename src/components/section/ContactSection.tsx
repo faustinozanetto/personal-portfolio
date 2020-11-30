@@ -324,6 +324,7 @@ const ContactSection = ({ dark }: ContactSectionProps) => {
                             placeholder='First Name'
                             autoComplete='off'
                             name='form-name'
+                            id='first-name'
                           />
                         </label>
                       </FirstNameFiled>
@@ -337,6 +338,7 @@ const ContactSection = ({ dark }: ContactSectionProps) => {
                             placeholder='Last Name'
                             autoComplete='off'
                             name='form-name'
+                            id='last-name'
                           />
                         </label>
                       </LastNameField>
@@ -352,6 +354,7 @@ const ContactSection = ({ dark }: ContactSectionProps) => {
                             placeholder='Email Address'
                             autoComplete='off'
                             name='form-email'
+                            id='email'
                           />
                         </label>
                       </EmailFiled>
@@ -365,6 +368,7 @@ const ContactSection = ({ dark }: ContactSectionProps) => {
                             placeholder='Subject'
                             autoComplete='off'
                             name='form-subject'
+                            id='subject'
                           />
                         </label>
                       </SubjectField>
@@ -372,13 +376,15 @@ const ContactSection = ({ dark }: ContactSectionProps) => {
                   </FormRow>
                   <FormRow>
                     <FormCol>
-                      <Message
-                        dark={dark}
-                        cols={30}
-                        rows={5}
-                        name='form-message'
-                        placeholder='Message'
-                      ></Message>
+                      <label>
+                        <Message
+                          dark={dark}
+                          cols={30}
+                          rows={5}
+                          name='form-message'
+                          placeholder='Message'
+                        ></Message>
+                      </label>
                     </FormCol>
                   </FormRow>
                   <SubmitButton
