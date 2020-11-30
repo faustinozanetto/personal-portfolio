@@ -317,7 +317,7 @@ const ContactSection = ({ dark }: ContactSectionProps) => {
                   <FormRow>
                     <FormCol>
                       <FirstNameFiled>
-                        <label htmlFor='first-name'></label>
+                        <label htmlFor='first-name'>First Name</label>
                         <Input
                           dark={dark}
                           type='text'
@@ -330,7 +330,7 @@ const ContactSection = ({ dark }: ContactSectionProps) => {
                     </FormCol>
                     <FormCol>
                       <LastNameField>
-                        <label htmlFor='last-name'></label>
+                        <label htmlFor='last-name'>Last Name</label>
                         <Input
                           dark={dark}
                           type='text'
@@ -345,7 +345,7 @@ const ContactSection = ({ dark }: ContactSectionProps) => {
                   <FormRow>
                     <FormCol>
                       <EmailFiled>
-                        <label htmlFor='email'></label>
+                        <label htmlFor='email'>Email</label>
                         <Input
                           dark={dark}
                           type='email'
@@ -358,7 +358,7 @@ const ContactSection = ({ dark }: ContactSectionProps) => {
                     </FormCol>
                     <FormCol>
                       <SubjectField>
-                        <label htmlFor='subject'></label>
+                        <label htmlFor='subject'>Subject</label>
                         <Input
                           dark={dark}
                           type='text'
@@ -372,7 +372,7 @@ const ContactSection = ({ dark }: ContactSectionProps) => {
                   </FormRow>
                   <FormRow>
                     <FormCol>
-                      <label htmlFor='message'></label>
+                      <label htmlFor='message'>Message</label>
                       <Message
                         dark={dark}
                         cols={30}
