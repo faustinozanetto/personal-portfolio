@@ -1,4 +1,5 @@
 import React, { lazy, Suspense } from 'react';
+import HttpsRedirect from 'react-https-redirect';
 import useDarkMode from 'use-dark-mode';
 import styled from 'styled-components';
 
@@ -29,19 +30,21 @@ const App = () => {
 
   return (
     <React.Fragment>
-      <AppContainer>
-        <GlobalStyle />
-        <Head>
-          <Navbar darkMode={darkMode.value} darkModeFunc={darkMode} />
-        </Head>
-        <AboutSection dark={darkMode.value} />
-        <PortfolioSection dark={darkMode.value} />
-        <SkillsSection dark={darkMode.value} />
-        <ContactSection dark={darkMode.value} />
-        <Suspense fallback={<div />}>
-          <Footer darkMode={darkMode.value} />
-        </Suspense>
-      </AppContainer>
+      <HttpsRedirect>
+        <AppContainer>
+          <GlobalStyle />
+          <Head>
+            <Navbar darkMode={darkMode.value} darkModeFunc={darkMode} />
+          </Head>
+          <AboutSection dark={darkMode.value} />
+          <PortfolioSection dark={darkMode.value} />
+          <SkillsSection dark={darkMode.value} />
+          <ContactSection dark={darkMode.value} />
+          <Suspense fallback={<div />}>
+            <Footer darkMode={darkMode.value} />
+          </Suspense>
+        </AppContainer>
+      </HttpsRedirect>
     </React.Fragment>
   );
 };

@@ -317,6 +317,7 @@ const ContactSection = ({ dark }: ContactSectionProps) => {
                   <FormRow>
                     <FormCol>
                       <FirstNameFiled>
+                        <label htmlFor='first-name'></label>
                         <Input
                           dark={dark}
                           type='text'
@@ -325,11 +326,11 @@ const ContactSection = ({ dark }: ContactSectionProps) => {
                           name='form-name'
                           id='first-name'
                         />
-                        <label htmlFor='first-name'></label>
                       </FirstNameFiled>
                     </FormCol>
                     <FormCol>
                       <LastNameField>
+                        <label htmlFor='last-name'></label>
                         <Input
                           dark={dark}
                           type='text'
@@ -338,13 +339,13 @@ const ContactSection = ({ dark }: ContactSectionProps) => {
                           name='form-name'
                           id='last-name'
                         />
-                        <label htmlFor='last-name'></label>
                       </LastNameField>
                     </FormCol>
                   </FormRow>
                   <FormRow>
                     <FormCol>
                       <EmailFiled>
+                        <label htmlFor='email'></label>
                         <Input
                           dark={dark}
                           type='email'
@@ -353,11 +354,11 @@ const ContactSection = ({ dark }: ContactSectionProps) => {
                           name='form-email'
                           id='email'
                         />
-                        <label htmlFor='email'></label>
                       </EmailFiled>
                     </FormCol>
                     <FormCol>
                       <SubjectField>
+                        <label htmlFor='subject'></label>
                         <Input
                           dark={dark}
                           type='text'
@@ -366,12 +367,12 @@ const ContactSection = ({ dark }: ContactSectionProps) => {
                           name='form-subject'
                           id='subject'
                         />
-                        <label htmlFor='subject'></label>
                       </SubjectField>
                     </FormCol>
                   </FormRow>
                   <FormRow>
                     <FormCol>
+                      <label htmlFor='message'></label>
                       <Message
                         dark={dark}
                         cols={30}
@@ -380,7 +381,6 @@ const ContactSection = ({ dark }: ContactSectionProps) => {
                         id='message'
                         placeholder='Message'
                       ></Message>
-                      <label htmlFor='message'></label>
                     </FormCol>
                   </FormRow>
                   <SubmitButton
