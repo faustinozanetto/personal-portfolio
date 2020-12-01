@@ -113,8 +113,6 @@ const PortfolioSection = ({ dark }: PortfolioSectionProps) => {
             <ProjectCard />
             <ProjectCard />
             <ProjectCard />
-            <ProjectCard />
-
           </ProjectsContainer>
         </BoxContent>
       </Container>

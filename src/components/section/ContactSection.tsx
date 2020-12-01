@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import aboutImage from '../../assets/images/about.jpg';
 import { Theme } from '../../styles';
 
 const { colors } = Theme;
@@ -71,14 +70,14 @@ const LeftContainer = styled.div`
   flex: 0 0 50%;
   max-width: 50%;
 
-  @media screen and (max-width: 768px) {
-    flex: 0 0 50%;
-    max-width: 50%;
+  @media only screen and (max-width: 1024px) {
+    padding-right: 30px;
   }
 
-  @media screen and (max-width: 576px) {
+  @media screen and (max-width: 768px) {
     flex: 0 0 100%;
     max-width: 100%;
+    padding-right: 15px;
   }
 `;
 
@@ -91,13 +90,6 @@ const RightContainer = styled.div`
   max-width: 50%;
 
   @media screen and (max-width: 768px) {
-    -ms-flex: 0 0 50%;
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
-
-  @media screen and (max-width: 576px) {
-    -ms-flex: 0 0 100%;
     flex: 0 0 100%;
     max-width: 100%;
   }
@@ -114,7 +106,7 @@ const RightContent = styled.div`
 
 const TitleContainer = styled.div`
   text-align: left;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 `;
 
 interface TitleProps {
@@ -149,10 +141,12 @@ const SubTitle = styled.h2<SubTitleProps>`
 
   @media only screen and (max-width: 768px) {
     font-size: 35px;
+    text-align: center;
   }
 
   @media only screen and (max-width: 576px) {
     font-size: 30px;
+    text-align: center;
   }
 `;
 

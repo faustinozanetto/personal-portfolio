@@ -141,11 +141,10 @@ const FooterCopyright = styled.p`
 `;
 
 type FooterProps = {
-  darkMode: boolean;
   element: any;
 };
 
-const Footer = ({ darkMode, element }: FooterProps) => {
+const Footer = ({ element }: FooterProps) => {
   return (
     <React.Fragment>
       <FooterWrapper>
