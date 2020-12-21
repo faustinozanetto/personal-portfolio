@@ -140,15 +140,11 @@ const FooterCopyright = styled.p`
   }
 `;
 
-type FooterProps = {
-  element: any;
-};
-
-const Footer = ({ element }: FooterProps) => {
+const Footer = () => {
   return (
     <React.Fragment>
       <FooterWrapper>
-        <FooterContainer ref={element}>
+        <FooterContainer>
           <FooterTop>
             <FooterNav>
               <FooterNavList>
@@ -168,10 +164,18 @@ const Footer = ({ element }: FooterProps) => {
             </FooterNav>
             <FooterSocial>
               <FooterSocial>
-                <FooterSocialLink href='https://twitter.com/' title='Twitter'>
+                <FooterSocialLink
+                  href='https://twitter.com/'
+                  target='_blank'
+                  title='Twitter'
+                >
                   <TwitterIcon />
                 </FooterSocialLink>
-                <FooterSocialLink href='https://github.com/' title='Github'>
+                <FooterSocialLink
+                  href='https://github.com/faustinozanetto'
+                  target='_blank'
+                  title='Github'
+                >
                   <GitHubIcon />
                 </FooterSocialLink>
               </FooterSocial>

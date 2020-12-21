@@ -8,7 +8,11 @@ const SkillElem = styled.li`
   margin-bottom: 20px;
 `;
 
-const SkillTitle = styled.div``;
+const SkillTitle = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+`;
 
 interface TitleSpanProps {
   readonly dark: Boolean;
@@ -17,7 +21,19 @@ interface TitleSpanProps {
 const TitleSpan = styled.span<TitleSpanProps>`
   font-size: 18px;
   margin-bottom: 10px;
-  display: inline-block;
+  color: ${(props) =>
+    props.dark ? `${colors.textDark}` : `${colors.textLight}`};
+  font-weight: ${(props) => (props.dark ? 400 : 600)};
+`;
+
+interface ExperienceSpanProps {
+  readonly dark: Boolean;
+}
+
+const ExperienceSpan = styled.span<ExperienceSpanProps>`
+  font-size: 13px;
+  padding-left: 10px;
+  margin-left: auto;
   color: ${(props) =>
     props.dark ? `${colors.textDark}` : `${colors.textLight}`};
   font-weight: ${(props) => (props.dark ? 400 : 600)};
@@ -60,15 +76,17 @@ const ProgressBar = styled.div<ProgressBarProps>`
 
 type SkillProps = {
   name: string;
+  experience: string;
   amount: string;
   dark: Boolean;
 };
 
-const Skill = ({ name, amount, dark }: SkillProps) => {
+const Skill = ({ name, experience, amount, dark }: SkillProps) => {
   return (
     <SkillElem>
       <SkillTitle>
         <TitleSpan dark={dark}>{name}</TitleSpan>
+        <ExperienceSpan dark={dark}>{experience}</ExperienceSpan>
       </SkillTitle>
       <Progress>
         <ProgressBar dark={dark} amount={amount}></ProgressBar>
@@ -269,11 +287,11 @@ const SkillsList = styled.ul`
 `;
 
 const skills = [
-  { name: 'JavaScript', amount: '70' },
-  { name: 'React', amount: '60' },
-  { name: 'Java', amount: '85' },
-  { name: 'HTML CSS', amount: '90' },
-  { name: 'Python', amount: '25' },
+  { name: 'JavaScript', experience: 'Intermediate', amount: '70' },
+  { name: 'React', experience: 'Beginner', amount: '60' },
+  { name: 'Java', experience: 'Intermediate', amount: '85' },
+  { name: 'HTML CSS', experience: 'Intermediate', amount: '90' },
+  { name: 'Python', experience: 'Beginner', amount: '25' },
 ];
 
 interface InfoTextProps {
@@ -284,9 +302,14 @@ const InfoText = styled.p<InfoTextProps>`
   margin: 0;
   color: ${(props) =>
     props.dark ? `${colors.textDark}` : `${colors.textLight}`};
-  font-size: 14px;
+  font-size: 18px;
   line-height: 22px;
-  font-weight: ${(props) => (props.dark ? 400 : 600)};
+  font-weight: ${(props) => (props.dark ? 400 : 500)};
+
+  @media only screen and (max-width: 768px) {
+    text-align: center;
+    text-justify: justify;
+  }
 `;
 
 type SkillsSectionProps = {
@@ -312,9 +335,9 @@ const SkillsSection = ({ dark }: SkillsSectionProps) => {
                         and <span> Understand</span>
                       </h2>
                       <InfoText dark={dark}>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing
-                        elit. Fuga, ratione aspernatur? At unde qui eum ex
-                        voluptatibus exercitationem temporibus reprehenderit!
+                        These are some of the skills I have learned with the
+                        years and use from now and then, I´m in the process of
+                        learning new technologies!
                       </InfoText>
                     </TitleContainer>
                   </LeftContent>
@@ -329,6 +352,7 @@ const SkillsSection = ({ dark }: SkillsSectionProps) => {
                               <Skill
                                 key={index}
                                 name={skill.name}
+                                experience={skill.experience}
                                 amount={skill.amount}
                                 dark={dark}
                               />

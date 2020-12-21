@@ -107,6 +107,10 @@ const RightContent = styled.div`
 const TitleContainer = styled.div`
   text-align: left;
   margin-bottom: 20px;
+
+  @media only screen and (max-width: 768px) {
+    margin-bottom: 10px;
+  }
 `;
 
 interface TitleProps {
@@ -120,6 +124,22 @@ const Title = styled.h3<TitleProps>`
   font-size: 28px;
   line-height: 110%;
   margin: 0;
+
+  @media only screen and (max-width: 1024px) {
+    font-size: 25px;
+  }
+
+  @media only screen and (max-width: 768px) {
+    font-size: 23px;
+    text-align: center;
+    padding-bottom: 1.5rem;
+  }
+
+  @media only screen and (max-width: 576px) {
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 1.5rem;
+  }
 `;
 
 interface SubTitleProps {
@@ -142,11 +162,13 @@ const SubTitle = styled.h2<SubTitleProps>`
   @media only screen and (max-width: 768px) {
     font-size: 35px;
     text-align: center;
+    padding-bottom: 1.5rem;
   }
 
   @media only screen and (max-width: 576px) {
     font-size: 30px;
     text-align: center;
+    padding-bottom: 1.5rem;
   }
 `;
 

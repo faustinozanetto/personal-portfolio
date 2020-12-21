@@ -160,9 +160,9 @@ const InfoText = styled.p<InfoTextProps>`
   margin: 0;
   color: ${(props) =>
     props.dark ? `${colors.textDark}` : `${colors.textLight}`};
-  font-size: 14px;
+  font-size: 18px;
   line-height: 22px;
-  font-weight: ${(props) => (props.dark ? 400 : 600)};
+  font-weight: ${(props) => (props.dark ? 400 : 500)};
 `;
 
 type AboutSectionProps = {
@@ -178,17 +178,14 @@ const AboutSection = ({ dark }: AboutSectionProps) => {
             <LeftContainer>
               <LeftContent>
                 <TitleContainer>
-                  <Title dark={dark}>About Me</Title>
+                  <Title dark={dark}>Hey there</Title>
                 </TitleContainer>
                 <LeftInfo>
-                  <InfoTitle dark={dark}>
-                    I am a <span>Web Developer</span>
-                  </InfoTitle>
+                  <InfoTitle dark={dark}>I am Faustino</InfoTitle>
                   <InfoText dark={dark}>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut
-                    doloremque ratione perferendis possimus voluptatibus
-                    distinctio autem expedita qui unde modi impedit officia
-                    illum praesentium amet, vero quos natus veritatis totam!
+                    I´m a full stack web developer passionated of coding and
+                    technology. This is my personal portfolio, where you can
+                    find my personal projects and more info about me!
                   </InfoText>
                 </LeftInfo>
               </LeftContent>

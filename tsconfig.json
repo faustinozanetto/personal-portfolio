@@ -1,20 +1,42 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "target": "es2017",
+    "module": "esnext",
     "allowJs": true,
+    "jsx": "react-native",
+    "sourceMap": true,
+    "outDir": "./build",
+    "rootDir": "./src",
+    "removeComments": false,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react"
+    "noEmit": true
   },
-  "include": ["src"],
-  "compileOnSave": true
+  "include": [
+    "src/**/*",
+    "./node_modules/react-native-dev-kit/**/*"
+  ],
+  "exclude": [
+    "__tests__",
+    "index.android.js",
+    "index.ios.js",
+    "build",
+    "local_history",
+    "node_modules"
+  ]
 }
